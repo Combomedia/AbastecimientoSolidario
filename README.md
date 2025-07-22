@@ -1,2 +1,0 @@
-# Abastecimiento-Solidario
-🚚
