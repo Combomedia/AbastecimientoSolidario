@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abastecimiento Solidario</title>
+    <title>Registro de Vehículos de Transporte</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -41,11 +41,8 @@
             padding: 20px;
             color: var(--light);
             line-height: 1.6;
-            /* Fondo animado con efecto fluido más contrastado */
             background: linear-gradient(135deg, #0a0f1c, #1a2438, #0a0f1c, #223a5e);
             background-size: 300% 300%;
-            animation: fluidBackground 12s ease infinite;
-            /* Efecto de aparición inicial más rápido */
             animation: fluidBackground 12s ease infinite, pageStart 0.8s ease-out;
         }
         
@@ -86,7 +83,6 @@
             overflow: hidden;
         }
         
-        /* Efecto de burbujas en el fondo del encabezado */
         .header::before {
             content: "";
             position: absolute;
@@ -116,12 +112,10 @@
             margin: 0 auto 20px;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            /* Nuevas sombras más pronunciadas para efecto 3D */
             box-shadow: 
                 0 0 0 10px rgba(255, 255, 255, 0.05),
                 0 10px 30px rgba(0, 0, 0, 0.5),
                 inset 0 0 20px rgba(255, 255, 255, 0.1);
-            /* Nueva animación de pulso con rotación */
             animation: pulseAndRotate 4s ease-in-out infinite;
         }
         
@@ -413,78 +407,6 @@
             to { top: 20px; opacity: 1; }
         }
         
-        /* Estilos para el buscador de apartamentos */
-        .search-container {
-            position: relative;
-            margin-bottom: 15px;
-        }
-        
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            max-height: 200px;
-            overflow-y: auto;
-            background: var(--darker);
-            border: 2px solid var(--light-gray);
-            border-top: none;
-            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-            box-shadow: var(--shadow-md);
-            z-index: 10;
-            display: none;
-        }
-        
-        .search-result-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 14px;
-            border-bottom: 1px solid var(--light-gray);
-            color: var(--light);
-        }
-        
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-        
-        .search-result-item:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-        }
-        
-        .apto-indicator {
-            margin-top: 8px;
-            font-size: 13px;
-            display: none;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-        }
-        
-        .valid {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .invalid {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .form-note {
-            font-size: 13px;
-            color: var(--gray);
-            margin-top: 5px;
-            display: block;
-            font-style: italic;
-        }
-        
         /* Animaciones para campos */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -495,6 +417,118 @@
         .error {
             animation: shake 0.5s;
             border-color: var(--danger) !important;
+        }
+        
+        /* Documentos Section */
+        .document-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(6, 214, 160, 0.05);
+            border-radius: var(--radius);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .document-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .document-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .doc-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .doc-name {
+            font-weight: 600;
+            color: var(--light);
+        }
+        
+        .doc-option {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .doc-option label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+        
+        .doc-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .file-input-group {
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .file-input-group.visible {
+            display: block;
+        }
+        
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-input-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            background: rgba(6, 214, 160, 0.15);
+            border: 1px dashed var(--primary);
+            border-radius: var(--radius-sm);
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .file-input-button:hover {
+            background: rgba(6, 214, 160, 0.25);
+        }
+        
+        .file-input-button i {
+            margin-right: 8px;
+        }
+        
+        .file-name {
+            margin-top: 8px;
+            font-size: 13px;
+            color: var(--gray);
+            display: none;
+        }
+        
+        .file-name.visible {
+            display: block;
         }
         
         /* Responsive */
@@ -554,6 +588,12 @@
             .form-title {
                 font-size: 1.3rem;
             }
+            
+            .doc-option {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -566,259 +606,478 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <span class="logo" id="logoEmoji" style="font-size: 2.5rem;">🧀</span>
+                <span class="logo" id="logoEmoji" style="font-size: 2.5rem;">🚚</span>
             </div>
             <div class="header-content">
-                <h1>Abastecimiento Solidario</h1>
-                <p>Completa los datos para acceder a todos nuestros beneficios</p>
+                <h1>Registro de Vehículos de Transporte</h1>
+                <p>Completa los datos para registrar tu vehículo de transporte de alimentos</p>
             </div>
         </div>
         
         <div class="form-container">
-            <h2 class="form-title">Datos de Registro</h2>
+            <h2 class="form-title">Información del Vehículo</h2>
             <form id="registrationForm">
                 <div class="form-row">
                     <div class="form-column">
                         <div class="form-group">
-                            <label for="cedula" class="required">Cédula</label>
+                            <label for="placa" class="required">Placa</label>
                             <div class="input-icon">
-                                <input type="text" id="cedula" name="cedula" required placeholder="Ej: 12345678">
-                                <i class="fas fa-id-card"></i>
+                                <input type="text" id="placa" name="placa" required placeholder="Ej: ABC123">
+                                <i class="fas fa-car"></i>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="nombre" class="required">Nombre</label>
+                            <label for="marca" class="required">Marca</label>
                             <div class="input-icon">
-                                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
-                                <i class="fas fa-user"></i>
+                                <input type="text" id="marca" name="marca" required placeholder="Marca del vehículo">
+                                <i class="fas fa-copyright"></i>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="apellido" class="required">Apellido</label>
+                            <label for="modelo" class="required">Modelo</label>
                             <div class="input-icon">
-                                <input type="text" id="apellido" name="apellido" required placeholder="Tu apellido">
-                                <i class="fas fa-user"></i>
+                                <input type="text" id="modelo" name="modelo" required placeholder="Modelo del vehículo">
+                                <i class="fas fa-car-side"></i>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-column">
                         <div class="form-group">
-                            <label for="email" class="required">Correo Electrónico</label>
+                            <label for="anio" class="required">Año</label>
                             <div class="input-icon">
-                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                                <i class="fas fa-envelope"></i>
+                                <input type="number" id="anio" name="anio" required min="1950" max="2025" placeholder="Año de fabricación">
+                                <i class="fas fa-calendar-alt"></i>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefono" class="required">Teléfono</label>
+                            <label for="tipo" class="required">Tipo de vehículo</label>
                             <div class="input-icon">
-                                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: 04121234567">
-                                <i class="fas fa-phone"></i>
+                                <select id="tipo" name="tipo" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="Refrigerado">Refrigerado</option>
+                                    <option value="Isotérmico">Isotérmico</option>
+                                    <option value="Cerrado">Cerrado</option>
+                                    <option value="Abierto">Abierto</option>
+                                    <option value="Especializado">Especializado</option>
+                                </select>
+                                <i class="fas fa-truck-loading"></i>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="nacimiento" class="required">Fecha de Nacimiento</label>
+                            <label for="capacidad" class="required">Capacidad de carga</label>
                             <div class="input-icon">
-                                <input type="date" id="nacimiento" name="nacimiento" required>
-                                <i class="fas fa-calendar"></i>
+                                <input type="number" id="capacidad" name="capacidad" required placeholder="Ej: 1000">
+                                <i class="fas fa-weight-hanging"></i>
                             </div>
-                            <span class="form-note">Debes tener al menos 18 años</span>
+                            <div style="display: flex; gap: 10px; margin-top: 8px;">
+                                <div style="flex: 1;">
+                                    <select id="unidad" name="unidad" required style="padding: 14px 16px;">
+                                        <option value="kg">Kilogramos (kg)</option>
+                                        <option value="litros">Litros</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                <h2 class="form-title">Registro de Viajes</h2>
                 
                 <div class="form-row">
                     <div class="form-column">
                         <div class="form-group">
-                            <label for="sexo" class="required">Sexo</label>
+                            <label for="fecha_salida" class="required">Fecha y Hora de Salida</label>
                             <div class="input-icon">
-                                <select id="sexo" name="sexo" required>
-                                    <option value="">Seleccione...</option>
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                                <i class="fas fa-venus-mars"></i>
+                                <input type="datetime-local" id="fecha_salida" name="fecha_salida" required>
+                                <i class="fas fa-plane-departure"></i>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-column">
                         <div class="form-group">
-                            <label for="estado" class="required">Estado</label>
+                            <label for="fecha_llegada" class="required">Fecha y Hora de Llegada</label>
                             <div class="input-icon">
-                                <select id="estado" name="estado" required onchange="cargarMunicipios()">
-                                    <option value="">Seleccione un estado...</option>
-                                    <option value="Amazonas">Amazonas</option>
-                                    <option value="Anzoátegui">Anzoátegui</option>
-                                    <option value="Apure">Apure</option>
-                                    <option value="Aragua">Aragua</option>
-                                    <option value="Barinas">Barinas</option>
-                                    <option value="Bolívar">Bolívar</option>
-                                    <option value="Carabobo">Carabobo</option>
-                                    <option value="Cojedes">Cojedes</option>
-                                    <option value="Delta Amacuro">Delta Amacuro</option>
-                                    <option value="Distrito Capital">Distrito Capital</option>
-                                    <option value="Falcón">Falcón</option>
-                                    <option value="Guárico">Guárico</option>
-                                    <option value="Lara">Lara</option>
-                                    <option value="Mérida">Mérida</option>
-                                    <option value="Miranda">Miranda</option>
-                                    <option value="Monagas">Monagas</option>
-                                    <option value="Nueva Esparta">Nueva Esparta</option>
-                                    <option value="Portuguesa">Portuguesa</option>
-                                    <option value="Sucre">Sucre</option>
-                                    <option value="Táchira">Táchira</option>
-                                    <option value="Trujillo">Trujillo</option>
-                                    <option value="La Guaira">La Guaira</option>
-                                    <option value="Yaracuy">Yaracuy</option>
-                                    <option value="Zulia">Zulia</option>
-                                </select>
-                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="datetime-local" id="fecha_llegada" name="fecha_llegada" required>
+                                <i class="fas fa-plane-arrival"></i>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="municipio" class="required">Municipio</label>
+                    <label for="incidencias">Incidencias (retrasos, daños a la carga)</label>
                     <div class="input-icon">
-                        <select id="municipio" name="municipio" required onchange="cargarParroquias()">
-                            <option value="">Primero seleccione un estado</option>
-                        </select>
-                        <i class="fas fa-city"></i>
+                        <textarea id="incidencias" name="incidencias" rows="3" placeholder="Describa cualquier incidencia ocurrida durante el viaje"></textarea>
+                        <i class="fas fa-exclamation-triangle"></i>
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="parroquia" class="required">Parroquia</label>
-                    <div class="input-icon">
-                        <select id="parroquia" name="parroquia" required>
-                            <option value="">Primero seleccione un municipio</option>
-                        </select>
-                        <i class="fas fa-map-pin"></i>
-                    </div>
-                </div>
+                <h2 class="form-title">Documentación Requerida</h2>
                 
-                <div class="form-group">
-                    <label for="interes" class="required">Interés</label>
-                    <div class="input-icon">
-                        <select id="interes" name="interes" required onchange="toggleInterestDetails()">
-                            <option value="">Seleccione su interés...</option>
-                            <option value="Comuna">Comuna</option>
-                            <option value="Fundación">Fundación</option>
-                            <option value="Cursos">Cursos</option>
-                            <option value="Empresa">Empresa</option>
-                        </select>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <div id="comunaDetails" class="interest-details hidden">
-                    <h3><i class="fas fa-users"></i> Detalles de Comuna</h3>
-                    <div class="form-group">
-                        <label for="comunaOption">Opción de Comuna</label>
-                        <div class="input-icon">
-                            <select id="comunaOption" name="comunaOption" onchange="toggleComunaOptions()">
-                                <option value="">Seleccione...</option>
-                                <option value="Agregar Comuna">Agregar Comuna</option>
-                                <option value="Parqué Central">Parqué Central</option>
-                                <option value="Comuna Venezuela">Comuna Venezuela</option>
-                            </select>
-                            <i class="fas fa-people-group"></i>
-                        </div>
-                    </div>
-                    
-                    <div id="nuevaComunaGroup" class="form-group hidden">
-                        <label for="nuevaComuna">Nombre de Nueva Comuna</label>
-                        <div class="input-icon">
-                            <input type="text" id="nuevaComuna" name="nuevaComuna" placeholder="Escriba el nombre de la nueva comuna">
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                    </div>
-                    
-                    <div id="parqueCentralGroup" class="hidden">
-                        <div class="form-group">
-                            <label for="residencia">Residencia</label>
-                            <div class="input-icon">
-                                <select id="residencia" name="residencia" onchange="toggleAptoField()">
-                                    <option value="">Seleccione...</option>
-                                    <option value="Tejar">Tejar</option>
-                                    <option value="San Martin">San Martin</option>
-                                    <option value="Mohedano">Mohedano</option>
-                                    <option value="Anauco">Anauco</option>
-                                    <option value="Tajama">Tajama</option>
-                                    <option value="Catuche">Catuche</option>
-                                    <option value="Caroata">Caroata</option>
-                                    <option value="Tacagua">Tacagua</option>
-                                </select>
-                                <i class="fas fa-home"></i>
+                <div class="document-section">
+                    <!-- Documento 1 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Cédula</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_cedula" value="si" onchange="toggleFileInput('cedula')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_cedula" value="no" onchange="toggleFileInput('cedula')"> No
+                                </label>
                             </div>
                         </div>
-                        
-                        <div id="aptoGroup" class="form-group hidden">
-                            <label for="apto">Apto</label>
-                            <div class="search-container">
-                                <div class="input-icon">
-                                    <input type="text" id="apto" name="apto" placeholder="Escriba para buscar..." 
-                                           oninput="searchAptos(this.value)">
-                                    <i class="fas fa-search"></i>
+                        <div class="file-input-group" id="fileGroup-cedula">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Foto de Cédula
                                 </div>
-                                <div class="search-results" id="aptoResults"></div>
+                                <input type="file" id="file-cedula" name="file-cedula" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('cedula')">
                             </div>
-                            <div class="apto-indicator" id="aptoIndicator"></div>
-                        </div>
-                        
-                        <div id="terminosGroup" class="checkbox-group hidden">
-                            <input type="checkbox" id="terminos" name="terminos">
-                            <label for="terminos">Relación administrativa CORPOCAPITAL</label>
+                            <div class="file-name" id="fileName-cedula"></div>
                         </div>
                     </div>
-                </div>
-                
-                <div id="fundacionDetails" class="interest-details hidden">
-                    <h3><i class="fas fa-hands-helping"></i> Detalles de Fundación</h3>
-                    <div class="form-group">
-                        <label for="fundacion">Fundaciones</label>
-                        <div class="input-icon">
-                            <select id="fundacion" name="fundacion">
-                                <option value="">Seleccione...</option>
-                                <option value="Misión Ribas">Misión Ribas</option>
-                                <option value="Fundación Causa Campesina">Fundación Causa Campesina</option>
-                                <option value="Observatorio Popular de medios">Observatorio Popular de medios</option>
-                                <option value="Proyecto Comuna Venezuela">Proyecto Comuna Venezuela</option>
-                            </select>
-                            <i class="fas fa-hands-helping"></i>
+                    
+                    <!-- Documento 2 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Licencia</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_licencia" value="si" onchange="toggleFileInput('licencia')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_licencia" value="no" onchange="toggleFileInput('licencia')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-licencia">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Foto de Licencia
+                                </div>
+                                <input type="file" id="file-licencia" name="file-licencia" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('licencia')">
+                            </div>
+                            <div class="file-name" id="fileName-licencia"></div>
                         </div>
                     </div>
-                </div>
-                
-                <div id="cursosDetails" class="interest-details hidden">
-                    <h3><i class="fas fa-graduation-cap"></i> Detalles de Cursos</h3>
-                    <div class="form-group">
-                        <label for="cursos">Cursos</label>
-                        <div class="input-icon">
-                            <select id="cursos" name="cursos">
-                                <option value="">Seleccione...</option>
-                                <option value="proximamente">Próximamente</option>
-                            </select>
-                            <i class="fas fa-graduation-cap"></i>
+                    
+                    <!-- Documento 3 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Certificado Médico</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_medico" value="si" onchange="toggleFileInput('certificado_medico')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_medico" value="no" onchange="toggleFileInput('certificado_medico')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_medico">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado Médico
+                                </div>
+                                <input type="file" id="file-certificado_medico" name="file-certificado_medico" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_medico')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_medico"></div>
                         </div>
                     </div>
-                </div>
-                
-                <div id="empresaDetails" class="interest-details hidden">
-                    <h3><i class="fas fa-building"></i> Detalles de Empresa</h3>
-                    <div class="form-group">
-                        <label for="empresa">Empresa</label>
-                        <div class="input-icon">
-                            <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa">
-                            <i class="fas fa-building"></i>
+                    
+                    <!-- Documento 4 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Inscripción en el RUPDAE</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_rupdae" value="si" onchange="toggleFileInput('rupdae')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_rupdae" value="no" onchange="toggleFileInput('rupdae')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-rupdae">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado RUPDAE
+                                </div>
+                                <input type="file" id="file-rupdae" name="file-rupdae" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('rupdae')">
+                            </div>
+                            <div class="file-name" id="fileName-rupdae"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 5 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Permiso de Movilización de Productos de Origen Animal</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_permiso_animal" value="si" onchange="toggleFileInput('permiso_animal')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_permiso_animal" value="no" onchange="toggleFileInput('permiso_animal')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-permiso_animal">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Permiso
+                                </div>
+                                <input type="file" id="file-permiso_animal" name="file-permiso_animal" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('permiso_animal')">
+                            </div>
+                            <div class="file-name" id="fileName-permiso_animal"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 6 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Solicitud de Registro para Transporte y/o Comercialización de Productos Pesqueros</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_solicitud_pesqueros" value="si" onchange="toggleFileInput('solicitud_pesqueros')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_solicitud_pesqueros" value="no" onchange="toggleFileInput('solicitud_pesqueros')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-solicitud_pesqueros">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Solicitud
+                                </div>
+                                <input type="file" id="file-solicitud_pesqueros" name="file-solicitud_pesqueros" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('solicitud_pesqueros')">
+                            </div>
+                            <div class="file-name" id="fileName-solicitud_pesqueros"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 7 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Inspección y Certificación de Actividades Conexas</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_inspeccion" value="si" onchange="toggleFileInput('inspeccion')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_inspeccion" value="no" onchange="toggleFileInput('inspeccion')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-inspeccion">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificación
+                                </div>
+                                <input type="file" id="file-inspeccion" name="file-inspeccion" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('inspeccion')">
+                            </div>
+                            <div class="file-name" id="fileName-inspeccion"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 8 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Salud</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_salud" value="si" onchange="toggleFileInput('certificado_salud')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_salud" value="no" onchange="toggleFileInput('certificado_salud')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_salud">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado de Salud
+                                </div>
+                                <input type="file" id="file-certificado_salud" name="file-certificado_salud" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_salud')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_salud"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 9 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Manipulador de Alimentos</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_manipulador" value="si" onchange="toggleFileInput('manipulador')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_manipulador" value="no" onchange="toggleFileInput('manipulador')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-manipulador">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado
+                                </div>
+                                <input type="file" id="file-manipulador" name="file-manipulador" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('manipulador')">
+                            </div>
+                            <div class="file-name" id="fileName-manipulador"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 10 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificación de Prestación de Servicios Transporte de Carga</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificacion_servicios" value="si" onchange="toggleFileInput('certificacion_servicios')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificacion_servicios" value="no" onchange="toggleFileInput('certificacion_servicios')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificacion_servicios">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificación
+                                </div>
+                                <input type="file" id="file-certificacion_servicios" name="file-certificacion_servicios" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificacion_servicios')">
+                            </div>
+                            <div class="file-name" id="fileName-certificacion_servicios"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 11 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Permiso Sanitario para Vehículos</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_permiso_sanitario" value="si" onchange="toggleFileInput('permiso_sanitario')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_permiso_sanitario" value="no" onchange="toggleFileInput('permiso_sanitario')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-permiso_sanitario">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Permiso Sanitario
+                                </div>
+                                <input type="file" id="file-permiso_sanitario" name="file-permiso_sanitario" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('permiso_sanitario')">
+                            </div>
+                            <div class="file-name" id="fileName-permiso_sanitario"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 12 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Póliza de Seguro</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_poliza" value="si" onchange="toggleFileInput('poliza')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_poliza" value="no" onchange="toggleFileInput('poliza')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-poliza">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Póliza de Seguro
+                                </div>
+                                <input type="file" id="file-poliza" name="file-poliza" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('poliza')">
+                            </div>
+                            <div class="file-name" id="fileName-poliza"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 13 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Registro de Vehículo</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_registro" value="si" onchange="toggleFileInput('certificado_registro')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_registro" value="no" onchange="toggleFileInput('certificado_registro')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_registro">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado de Registro
+                                </div>
+                                <input type="file" id="file-certificado_registro" name="file-certificado_registro" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_registro')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_registro"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 14 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Documentación sanitaria</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_documentacion_sanitaria" value="si" onchange="toggleFileInput('documentacion_sanitaria')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_documentacion_sanitaria" value="no" onchange="toggleFileInput('documentacion_sanitaria')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-documentacion_sanitaria">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Documentación Sanitaria
+                                </div>
+                                <input type="file" id="file-documentacion_sanitaria" name="file-documentacion_sanitaria" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('documentacion_sanitaria')">
+                            </div>
+                            <div class="file-name" id="fileName-documentacion_sanitaria"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 15 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Hoja de ruta para el control</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_hoja_ruta" value="si" onchange="toggleFileInput('hoja_ruta')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_hoja_ruta" value="no" onchange="toggleFileInput('hoja_ruta')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-hoja_ruta">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Hoja de Ruta
+                                </div>
+                                <input type="file" id="file-hoja_ruta" name="file-hoja_ruta" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('hoja_ruta')">
+                            </div>
+                            <div class="file-name" id="fileName-hoja_ruta"></div>
                         </div>
                     </div>
                 </div>
@@ -839,1661 +1098,35 @@
     </div>
 
     <script>
-        // URL del script de Google Apps Script
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzGRzcvokFHg7LU2K_XYgVZ5Aju4cRpZhaG2SdKxMRx8BoOCoujxSzcPeFWipzusPGm/exec';
-        
-        // Opciones válidas para apartamentos
-        const opcionesApto = ["01A",	"01B",	"01C",	"01D",	"01E",	"01F",	"01G",	"01H",	"01J",	"01K",	"01L",	"01M",	"01N",	"01P",	"01Q",	"01R",	"01S",	"01T",	"01U",	"01V",	"02A",	"02B",	"02C",	"02D",	"02E",	"02F",	"02G",	"02H",	"02J",	"02K",	"02L",	"02M",	"02N",	"02P",	"02Q",	"02R",	"02S",	"02T",	"02U",	"02V",	"03A",	"03B",	"03C",	"03D",	"03E",	"03F",	"03G",	"03H",	"03J",	"03K",	"03L",	"03N",	"03M",	"04A",	"04B",	"04C",	"04D",	"04E",	"04F",	"04G",	"04H",	"04J",	"04K",	"04L",	"04M",	"04N",	"05A",	"05B",	"05C",	"05D",	"05E",	"05F",	"05G",	"05H",	"05J",	"05K",	"05L",	"05M",	"05N",	"06A",	"06B",	"06C",	"06D",	"06E",	"06F",	"06G",	"06H",	"06J",	"06K",	"06L",	"06M",	"06N",	"06P",	"06Q",	"07A",	"07B",	"07C",	"07D",	"07E",	"07F",	"07G",	"07H",	"07J",	"07K",	"07L",	"07M",	"07N",	"07P",	"07Q",	"08A",	"08B",	"08C",	"08D",	"08E",	"08F",	"08G",	"08H",	"08J",	"08K",	"08L",	"08M",	"08N",	"08P",	"08Q",	"09A",	"09B",	"09C",	"09D",	"09E",	"09F",	"09G",	"09H",	"09J",	"09K",	"09L",	"09M",	"09N",	"09P",	"09Q",	"10A",	"10B",	"10C",	"10D",	"10E",	"10F",	"10G",	"10H",	"10J",	"10K",	"10L",	"10M",	"10N",	"10P",	"10Q",	"11A",	"11B",	"11C",	"11D",	"11E",	"11F",	"11G",	"11H",	"11J",	"11K",	"11L",	"11M",	"11N",	"11P",	"11Q",	"12A",	"12B",	"12C",	"12D",	"12E",	"12F",	"12G",	"12H",	"12J",	"12K",	"12L",	"12M",	"12N",	"12P",	"12Q",	"13A",	"13B",	"13C",	"13D",	"13E",	"13F",	"13G",	"13H",	"13J",	"13K",	"13L",	"13M",	"13N",	"13P",	"13Q",	"14A",	"14B",	"14C",	"14D",	"14E",	"14F",	"14G",	"14H",	"14J",	"14K",	"14L",	"14M",	"14N",	"14P",	"14Q",	"15A",	"15B",	"15C",	"15D",	"15E",	"15F",	"15G",	"15H",	"15J",	"15K",	"15L",	"15M",	"15N",	"15P",	"15Q",	"16A",	"16B",	"16C",	"16D",	"16E",	"16F",	"16G",	"16H",	"16J",	"16K",	"16L",	"16M",	"16N",	"16P",	"16Q",	"17A",	"17B",	"17C",	"17D",	"17E",	"17F",	"17G",	"17H",	"17J",	"17K",	"17L",	"17M",	"17N",	"17P",	"17Q",	"18A",	"18B",	"18C",	"18D",	"18E",	"18F",	"18G",	"18H",	"18J",	"18K",	"18L",	"18M",	"18N",	"18P",	"18Q",	"19A",	"19B",	"19C",	"19D",	"19E",	"19F",	"19G",	"19H",	"19J",	"19K",	"19L",	"19M",	"19N",	"19P",	"19Q",	"OF101",	"OF102",	"OF103",	"OF104",	"OF105",	"OF106",	"OF107",	"OF108",	"OF109",	"OF110",	"OF111",	"OF112",	"OF113",	"OF114",	"OF115",	"OF116",	"OF117",	"OF118",	"OF119",	"OF120",	"OF201",	"OF202",	"OF203",	"OF204",	"OF205",	"OF206",	"OF207",	"OF208",	"OF209",	"OF210",	"OF211",	"OF212",	"OF213",	"OF214",	"OF215",	"OF216",	"OF217",	"OF218",	"OF219",	"OF220",	"PH"];
-        
-        // Emojis para rotación
-        const emojis = ['🧀', '📦', '🚚', '🗺️', '✅'];
-        let currentEmojiIndex = 0;
-        const logoEmoji = document.getElementById('logoEmoji');
-        
-        // Función para cambiar el emoji con animación de desenfoque
-        function changeEmoji() {
-            currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
-            // Agregamos clase para animar
-            logoEmoji.classList.add('changing');
-            // Cambiamos el emoji después de un pequeño retardo para que se vea la animación
-            setTimeout(() => {
-                logoEmoji.textContent = emojis[currentEmojiIndex];
-                logoEmoji.classList.remove('changing');
-            }, 250); // La animación dura 0.5s, pero cambiamos en la mitad
-        }
-        
-        // Iniciar la rotación de emojis
-        setInterval(changeEmoji, 2000);
-        
-        // Base de datos de ubicaciones
-        const ubicaciones = {
-                        "Distrito Capital": {
-                	
-                "Libertador": [	"Altagracia", "Candelaria", "Catedral", "La Pastora", "San Agustin", "San Jose", "San Juan", "Santa Rosalia", "Santa Teresa", "Sucre", "23 De Enero", "Antimano", "El Recreo", "El Valle", "La Vega", "Macarao", "Caricuao", "El Junquito", "Coche", "San Pedro", "San Bernardino", "El Paraíso"
-                ]
-            ,
-			
-            },
-            "Anzoátegui": {
-                	
-                "Anaco": [	"Anaco", "San Joaquin"
-                ]
-            ,
-            	
-                "Aragua": [	"Aragua De Barcelona", "Cachipo"
-                ]
-            ,
-            	
-                "Bolivar": [	"El Carmen", "San Cristobal", "Bergantin", "Caigua", "El Pilar", "Naricual"
-                ]
-            ,
-            	
-                "Bruzual": [	"Clarines", "Guanape", "Sabana De Uchire"
-                ]
-            ,
-            	
-                "Cajigal": [	"Onoto", "San Pablo"
-                ]
-            ,
-            	
-                "Freites": [	"Cantaura", "Libertador", "Santa Rosa", "Urica"
-                ]
-            ,
-            	
-                "Independencia": [	"Soledad", "Mamo"
-                ]
-            ,
-            	
-                "Libertad": [	"San Mateo", "El Carito", "Santa Ines"
-                ]
-            ,
-            	
-                "Miranda": [	"Pariaguan", "Atapirire", "Boca Del Pao", "El Pao"
-                ]
-            ,
-            	
-                "Monagas": [	"Mapire", "Piar", "Sn Diego De Cabrutica", "Santa Clara", "Uverito", "Zuata"
-                ]
-            ,
-            	
-                "Peñalver": [	"Puerto Piritu", "San Miguel", "Sucre"
-                ]
-            ,
-            	
-                "Simon Rodriguez": [	"El Tigre"
-                ]
-            ,
-            	
-                "Sotillo": [	"Pozuelos", "Puerto La Cruz"
-                ]
-            ,
-            	
-                "Guanipa": [	"San Jose De Guanipa"
-                ]
-            ,
-            	
-                "Guanta": [	"Guanta", "Chorreron"
-                ]
-            ,
-            	
-                "Piritu": [	"Piritu", "San Francisco"
-                ]
-            ,
-            	
-                "L/Diego Bautista": [	"Lecherias", "El Morro"
-                ]
-            ,
-            	
-                "Carvajal": [	"Valle Guanape", "Santa Barbara"
-                ]
-            ,
-            	
-                "Santa Ana": [	"Santa Ana", "Pueblo Nuevo"
-                ]
-            ,
-            	
-                "Mc Gregor": [	"El Chaparro", "Tomas Alfaro Calatrava"
-                ]
-            ,
-            	
-                "S Juan Capistrano": [	"Boca De Uchire", "Boca De Chavez"
-                ]
-            ,
-			
-            },
-            "Apure": {
-                	
-                "Achaguas": [	"Achaguas", "Apurito", "El Yagual", "Guachara", "Mucuritas", "Queseras Del Medio"
-                ]
-            ,
-            	
-                "Muñoz": [	"Bruzual", "Mantecal", "Quintero", "San Vicente", "Rincon Hondo"
-                ]
-            ,
-            	
-                "Paez": [	"Guasdualito", "Aramendi", "El Amparo", "San Camilo", "Urdaneta"
-                ]
-            ,
-            	
-                "Pedro Camejo": [	"San Juan De Payara", "Codazzi", "Cunaviche"
-                ]
-            ,
-            	
-                "Romulo Gallegos": [	"Elorza", "La Trinidad"
-                ]
-            ,
-            	
-                "San Fernando": [	"San Fernando", "Peñalver", "El Recreo", "Sn Rafael De Atamaica"
-                ]
-            ,
-            	
-                "Biruaca": [	"Biruaca"
-                ]
-            ,
-			
-            },
-            "Aragua": {
-                	
-                "Girardot": [	"Las Delicias", "Choroni", "Madre Ma De San Jose", "Joaquin Crespo", "Pedro Jose Ovalles", "Jose Casanova Godoy", "Jose Casanova Godoy", "Andres Eloy Blanco", "Los Tacariguas"
-                ]
-            ,
-            	
-                "Santiago Mariño": [	"Turmero", "Saman De Guere", "Alfredo Pacheco M", "Chuao", "Arevalo Aponte"
-                ]
-            ,
-            	
-                "Jose Felix Ribas": [	"Juan Vicente Bolivar", "Zuata", "Pao De Zarate", "Castor Nieves Rios", "Las Guacamayas"
-                ]
-            ,
-            	
-                "San Casimiro": [	"San Casimiro", "Valle Morin", "Guiripa", "Ollas De Caramacate"
-                ]
-            ,
-            	
-                "San Sebastian": [	"San Sebastian"
-                ]
-            ,
-            	
-                "Sucre": [	"Cagua", "Bella Vista"
-                ]
-            ,
-            	
-                "Urdaneta": [	"Barbacoas", "San Francisco De Cara", "Taguay", "Las Peñitas"
-                ]
-            ,
-            	
-                "Zamora": [	"Villa De Cura", "Magdaleno", "San Francisco De Asis", "Valles De Tucutunemo", "Pq Augusto Mijares"
-                ]
-            ,
-            	
-                "Libertador": [	"Palo Negro", "San Martin De Porres"
-                ]
-            ,
-            	
-                "Jose Angel Lamas": [	"Santa Cruz"
-                ]
-            ,
-            	
-                "Bolivar": [	"San Mateo"
-                ]
-            ,
-            	
-                "Santos Michelena": [	"Las Tejerias", "Tiara"
-                ]
-            ,
-            	
-                "Mario B Iragorry": [	"El Limon", "Caña De Azucar"
-                ]
-            ,
-            	
-                "Tovar": [	"Colonia Tovar"
-                ]
-            ,
-            	
-                "Camatagua": [	"Camatagua", "Carmen De Cura"
-                ]
-            ,
-            	
-                "Jose R Revenga": [	"El Consejo"
-                ]
-            ,
-            	
-                "Francisco Linares": [	"Santa Rita", "Francisco De Miranda", "Mons Feliciano G"
-                ]
-            ,
-            	
-                "Ocumare D L Costa": [	"Ocumare De La Costa"
-                ]
-            ,
-			
-            },
-            "Barinas": {
-                	
-                "Arismendi": [	"Arismendi", "Guadarrama", "La Union", "San Antonio"
-                ]
-            ,
-            	
-                "Barinas": [	"Alfredo A Larriva", "Barinas", "San Silvestre", "Santa Ines", "Santa Lucia", "Torunos", "El Carmen", "Romulo Betancourt", "Corazon De Jesus", "Ramon I Mendez", "Alto Barinas", "Manuel P Fajardo", "Juan A Rodriguez D", "Dominga Ortiz P"
-                ]
-            ,
-            	
-                "Bolivar": [	"Altamira", "Barinitas", "Calderas"
-                ]
-            ,
-            	
-                "Ezequiel Zamora": [	"Santa Barbara", "Jose Ignacio Del Pumar", "Ramon Ignacio Mendez", "Pedro Briceño Mendez"
-                ]
-            ,
-            	
-                "Obispos": [	"El Real", "La Luz", "Obispos", "Los Guasimitos"
-                ]
-            ,
-            	
-                "Pedraza": [	"Ciudad Bolivia", "Ignacio Briceño", "Paez", "Jose Felix Ribas"
-                ]
-            ,
-            	
-                "Rojas": [	"Dolores", "Libertad", "Palacios Fajardo", "Santa Rosa", "Simon Rodriguez"
-                ]
-            ,
-            	
-                "Sosa": [	"Ciudad De Nutrias", "El Regalo", "Puerto De Nutrias", "Santa Catalina", "Simon Bolivar"
-                ]
-            ,
-            	
-                "Alberto Arvelo T": [	"Rodriguez Dominguez", "Sabaneta"
-                ]
-            ,
-            	
-                "A Jose De Sucre": [	"Ticoporo", "Nicolas Pulido", "Andres Bello"
-                ]
-            ,
-            	
-                "Cruz Paredes": [	"Barrancas", "El Socorro", "Masparrito"
-                ]
-            ,
-            	
-                "Andres E. Blanco": [	"El Canton", "Santa Cruz De Guacas", "Puerto Vivas"
-                ]
-            ,
-			
-            },
-            "Bolívar": {
-                	
-                "Caroni": [	"Simon Bolivar", "Once De Abril", "Vista Al Sol", "Chirica", "Dalla Costa", "Cachamay", "Universidad", "Unare", "Yocoima", "Pozo Verde", "5 De Julio"
-                ]
-            ,
-            	
-                "Cedeño": [	"Caicara Del Orinoco", "Ascension Farreras", "Altagracia", "La Urbana", "Guaniamo", "Pijiguaos"
-                ]
-            ,
-            	
-                "Heres": [	"Catedral", "Agua Salada", "La Sabanita", "Vista Hermosa", "Marhuanta", "Jose Antonio Paez", "Orinoco", "Panapana", "Zea"
-                ]
-            ,
-            	
-                "Piar": [	"Upata", "Andres Eloy Blanco", "Pedro Cova"
-                ]
-            ,
-            	
-                "Roscio": [	"Guasipati", "Salom"
-                ]
-            ,
-            	
-                "Sucre": [	"Maripa", "Aripao", "Las Majadas", "Moitaco", "Guarataro"
-                ]
-            ,
-            	
-                "Sifontes": [	"Tumeremo", "Dalla Costa", "San Isidro"
-                ]
-            ,
-            	
-                "De Angostura": [	"Ciudad Piar", "San Francisco", "Barceloneta", "Santa Barbara"
-                ]
-            ,
-            	
-                "Gran Sabana": [	"Santa Elena De Uairen", "Ikabaru"
-                ]
-            ,
-            	
-                "El Callao": [	"El Callao"
-                ]
-            ,
-            	
-                "Padre Pedro Chien": [	"El Palmar"
-                ]
-            ,
-			
-            },
-            "Carabobo": {
-                	
-                "Bejuma": [	"Bejuma", "Canoabo", "Simon Bolivar"
-                ]
-            ,
-            	
-                "Carlos Arvelo": [	"Guigue", "Belen", "Tacarigua"
-                ]
-            ,
-            	
-                "Diego Ibarra": [	"Mariara", "Aguas Calientes"
-                ]
-            ,
-            	
-                "Guacara": [	"Guacara", "Ciudad Alianza", "Yagua"
-                ]
-            ,
-            	
-                "Montalban": [	"Montalban"
-                ]
-            ,
-            	
-                "Juan Jose Mora": [	"Moron", "Urama"
-                ]
-            ,
-            	
-                "Puerto Cabello": [	"Democracia", "Fraternidad", "Goaigoaza", "Juan Jose Flores", "Bartolome Salom", "Union", "Borburata", "Patanemo"
-                ]
-            ,
-            	
-                "San Joaquin": [	"San Joaquin"
-                ]
-            ,
-            	
-                "Valencia": [	"Candelaria", "Catedral", "El Socorro", "Miguel Peña", "San Blas", "San Jose", "Santa Rosa", "Rafael Urdaneta", "Negro Primero"
-                ]
-            ,
-            	
-                "Miranda": [	"Miranda"
-                ]
-            ,
-            	
-                "Los Guayos": [	"U Los Guayos"
-                ]
-            ,
-            	
-                "Naguanagua": [	"Naguanagua"
-                ]
-            ,
-            	
-                "San Diego": [	"Urb San Diego"
-                ]
-            ,
-            	
-                "Libertador": [	"U Tocuyito", "U Independencia"
-                ]
-            ,
-			
-            },
-            "Cojedes": {
-                	
-                "Anzoátegui": [	"Cojedes", "Juan De Mata Suarez"
-                ]
-            ,
-            	
-                "Autonomo Tinaquillo": [	"Tinaquillo"
-                ]
-            ,
-            	
-                "Girardot": [	"El Baul", "Sucre"
-                ]
-            ,
-            	
-                "Pao S J Bautista": [	"El Pao"
-                ]
-            ,
-            	
-                "Ricaurte": [	"Libertad De Cojedes", "El Amparo"
-                ]
-            ,
-            	
-                "Ezequiel Zamora": [	"San Carlos De Austria", "Juan Angel Bravo", "Manuel Manrique"
-                ]
-            ,
-            	
-                "Tinaco": [	"Grl/Jefe Jose L Silva"
-                ]
-            ,
-            	
-                "Lima Blanco": [	"Macapo", "La Aguadita"
-                ]
-            ,
-            	
-                "Romulo Gallegos": [	"Romulo Gallegos"
-                ]
-            ,
-			
-            },
-            "Falcón": {
-                	
-                "Acosta": [	"San Juan De Los Cayos", "Capadare", "La Pastora", "Libertador"
-                ]
-            ,
-            	
-                "Bolivar": [	"San Luis", "Aracua", "La Peña"
-                ]
-            ,
-            	
-                "Buchivacoa": [	"Capatarida", "Borojo", "Seque", "Zazarida", "Bariro", "Guajiro"
-                ]
-            ,
-            	
-                "Carirubana": [	"Norte", "Carirubana", "Punta Cardon", "Santa Ana"
-                ]
-            ,
-            	
-                "Colina": [	"La Vela De Coro", "Acurigua", "Guaibacoa", "Macoruca", "Las Calderas"
-                ]
-            ,
-            	
-                "Democracia": [	"Pedregal", "Agua Clara", "Avaria", "Piedra Grande", "Purureche"
-                ]
-            ,
-            	
-                "Falcón": [	"Pueblo Nuevo", "Adicora", "Baraived", "Buena Vista", "Jadacaquiva", "Moruy", "El Vinculo", "El Hato", "Adaure"
-                ]
-            ,
-            	
-                "Federacion": [	"Churuguara", "Agua Larga", "Independencia", "Maparari", "El Pauji"
-                ]
-            ,
-            	
-                "Mauroa": [	"Mene De Mauroa", "Casigua", "San Felix"
-                ]
-            ,
-            	
-                "Miranda": [	"San Antonio", "San Gabriel", "Santa Ana", "Guzman Guillermo", "Mitare", "Sabaneta", "Rio Seco"
-                ]
-            ,
-            	
-                "Petit": [	"Cabure", "Curimagua", "Colina"
-                ]
-            ,
-            	
-                "Silva": [	"Tucacas", "Boca De Aroa"
-                ]
-            ,
-            	
-                "Zamora": [	"Puerto Cumarebo", "La Cienaga", "La Soledad", "Pueblo Cumarebo", "Zazarida"
-                ]
-            ,
-            	
-                "Dabajuro": [	"Dabajuro"
-                ]
-            ,
-            	
-                "Mons. Iturriza": [	"Chichiriviche", "Boca De Tocuyo", "Tocuyo De La Costa"
-                ]
-            ,
-            	
-                "Los Taques": [	"Los Taques", "Judibana"
-                ]
-            ,
-            	
-                "Piritu": [	"Piritu", "San Jose De La Costa"
-                ]
-            ,
-            	
-                "Union": [	"Sta.Cruz De Bucaral", "El Charal", "Las Vegas Del Tuy"
-                ]
-            ,
-            	
-                "San Francisco": [	"Mirimire"
-                ]
-            ,
-            	
-                "Jacura": [	"Jacura", "Agua Linda", "Araurima"
-                ]
-            ,
-            	
-                "Cacique Manaure": [	"Yaracal"
-                ]
-            ,
-            	
-                "Palmasola": [	"Palmasola"
-                ]
-            ,
-            	
-                "Sucre": [	"Sucre", "Pecaya"
-                ]
-            ,
-            	
-                "Urumaco": [	"Urumaco", "Bruzual"
-                ]
-            ,
-            	
-                "Tocopero": [	"Tocopero"
-                ]
-            ,
-			
-            },
-            "Guárico": {
-                	
-                "Infante": [	"Valle De La Pascua", "Espino"
-                ]
-            ,
-            	
-                "Mellado": [	"El Sombrero", "Sosa"
-                ]
-            ,
-            	
-                "Miranda": [	"Calabozo", "El Calvario", "El Rastro", "Guardatinajas"
-                ]
-            ,
-            	
-                "Monagas": [	"Altagracia De Orituco", "Lezama", "Libertad De Orituco", "San Fco De Macaira", "San Rafael De Orituco", "Soublette", "Paso Real De Macaira"
-                ]
-            ,
-            	
-                "Ribas": [	"Tucupido", "San Rafael De Laya"
-                ]
-            ,
-            	
-                "Juan German Roscio N.": [	"San Juan De Los Morros", "Parapara", "Cantagallo"
-                ]
-            ,
-            	
-                "Zaraza": [	"Zaraza", "San Jose De Unare"
-                ]
-            ,
-            	
-                "Camaguan": [	"Camaguan", "Puerto Miranda", "Uverito"
-                ]
-            ,
-            	
-                "S Jose De Guaribe": [	"San Jose De Guaribe"
-                ]
-            ,
-            	
-                "Las Mercedes": [	"Las Mercedes", "Sta Rita De Manapire", "Cabruta"
-                ]
-            ,
-            	
-                "El Socorro": [	"El Socorro"
-                ]
-            ,
-            	
-                "Ortiz": [	"Ortiz", "San Fco. De Tiznados", "San Jose De Tiznados", "S Lorenzo De Tiznados"
-                ]
-            ,
-            	
-                "S Maria De Ipire": [	"Santa Maria De Ipire", "Altamira"
-                ]
-            ,
-            	
-                "Chaguaramas": [	"Chaguaramas"
-                ]
-            ,
-            	
-                "San Geronimo De G": [	"Guayabal", "Cazorla"
-                ]
-            ,
-			
-            },
-            "Lara": {
-                	
-                "Crespo": [	"Freitez", "Jose Maria Blanco"
-                ]
-            ,
-            	
-                "Iribarren": [	"Catedral", "La Concepcion", "Santa Rosa", "Union", "El Cuji", "Tamaca", "Juan De Villegas", "Aguedo F. Alvarado", "Buena Vista", "Juarez"
-                ]
-            ,
-            	
-                "Jimenez": [	"Juan B Rodriguez", "Diego De Lozada", "San Miguel", "Cuara", "Paraiso De San Jose", "Tintorero", "Jose Bernardo Dorante", "Jose Bernardo Dorante", "Crnel. Mariano Peraza"
-                ]
-            ,
-            	
-                "Moran": [	"Bolivar", "Anzoátegui", "Guarico", "Humocaro Alto", "Humocaro Bajo", "Moran", "Hilario Luna Y Luna", "La Candelaria"
-                ]
-            ,
-            	
-                "Palavecino": [	"Cabudare", "Jose G. Bastidas", "Agua Viva"
-                ]
-            ,
-            	
-                "Torres": [	"Trinidad Samuel", "Antonio Diaz", "Camacaro", "Castañeda", "Chiquinquira", "Espinoza Los Monteros", "Lara", "Manuel Morillo", "Montes De Oca", "Torres", "El Blanco", "Monta Verde", "Heriberto Arroyo", "Las Mercedes", "Cecilio Zubillaga", "Reyes Vargas", "Altagracia"
-                ]
-            ,
-            	
-                "Urdaneta": [	"Siquisique", "San Miguel", "Xaguas", "Moroturo"
-                ]
-            ,
-            	
-                "Andres E Blanco": [	"Pio Tamayo", "Yacambu", "Qbda. Honda De Guache", "Qbda. Honda De Guache"
-                ]
-            ,
-            	
-                "Simon Planas": [	"Sarare", "Gustavo Vegas Leon", "Buria"
-                ]
-            ,
-			
-            },
-            "Mérida": {
-                	
-                "Alberto Adriani": [	"Gabriel Picon G.", "Hector Amable Mora", "Jose Nucete Sardi", "Pulido Mendez", "Pte. Romulo Gallegos", "Presidente Betancourt", "Presidente Paez"
-                ]
-            ,
-            	
-                "Andres Bello": [	"La Azulita"
-                ]
-            ,
-            	
-                "Arzobispo Chacon": [	"Canagua", "Capuri", "Chacanta", "El Molino", "Guaimaral", "Mucutuy", "Mucuchachi"
-                ]
-            ,
-            	
-                "Campo Elias": [	"Acequias", "Jaji", "La Mesa", "San Jose", "Montalban", "Matriz", "Fernandez Peña"
-                ]
-            ,
-            	
-                "Guaraque": [	"Guaraque", "Mesa De Quintero", "Rio Negro"
-                ]
-            ,
-            	
-                "Julio Cesar Salas": [	"Arapuey", "Palmira"
-                ]
-            ,
-            	
-                "Justo Briceño": [	"Torondoy", "San Cristobal De T"
-                ]
-            ,
-            	
-                "Libertador": [	"Arias", "Sagrario", "Milla", "El Llano", "Juan Rodriguez Suarez", "Jacinto Plaza", "Domingo Peña", "Gonzalo Picon Febres", "Osuna Rodriguez", "Lasso De La Vega", "Caracciolo Parra P", "Mariano Picon Salas", "Antonio Spinetti Dini", "El Morro", "Los Nevados"
-                ]
-            ,
-            	
-                "Santos Marquina": [	"Tabay"
-                ]
-            ,
-            	
-                "Miranda": [	"Timotes", "Andres Eloy Blanco", "Piñango", "La Venta"
-                ]
-            ,
-            	
-                "Antonio Pinto S.": [	"Sta Cruz De Mora", "Mesa Bolivar", "Mesa De Las Palmas"
-                ]
-            ,
-            	
-                "Ob. Ramos De Lora": [	"Sta Elena De Arenales", "Eloy Paredes", "San Rafael De A."
-                ]
-            ,
-            	
-                "Caracciolo Parra": [	"Tucani", "Florencio Ramirez"
-                ]
-            ,
-            	
-                "Cardenal Quintero": [	"Santo Domingo", "Las Piedras"
-                ]
-            ,
-            	
-                "Pueblo Llano": [	"Pueblo Llano"
-                ]
-            ,
-            	
-                "Rangel": [	"Mucuchies", "Mucuruba", "San Rafael", "Cacute", "La Toma"
-                ]
-            ,
-            	
-                "Rivas Davila": [	"Bailadores", "Geronimo Maldonado"
-                ]
-            ,
-            	
-                "Sucre": [	"Lagunillas", "Chiguara", "Estanques", "San Juan", "Pueblo Nuevo Del Sur", "La Trampa"
-                ]
-            ,
-            	
-                "Tovar": [	"El Llano", "Tovar", "El Amparo", "San Francisco"
-                ]
-            ,
-            	
-                "Tulio F Cordero": [	"Nueva Bolivia", "Independencia", "Maria C Palacios", "Santa Apolonia"
-                ]
-            ,
-            	
-                "Padre Noguera": [	"Sta Maria De Caparo"
-                ]
-            ,
-            	
-                "Aricagua": [	"Aricagua", "San Antonio"
-                ]
-            ,
-            	
-                "Zea": [	"Zea", "Caño El Tigre"
-                ]
-            ,
-			
-            },
-            "Miranda": {
-                	
-                "Acev": [	"Caucagua", "Araguita", "Arevalo Gonzalez", "Capaya", "Panaquire", "Ribas", "El Cafe", "Marizapa"
-                ]
-            ,
-            	
-                "Brion": [	"Higuerote", "Curiepe", "Tacarigua"
-                ]
-            ,
-            	
-                "Guaicaipuro": [	"Los Teques", "Cecilio Acosta", "Paracotos", "San Pedro", "Tacata", "El Jarillo", "Altagracia De La M"
-                ]
-            ,
-            	
-                "Independencia": [	"Sta Teresa Del Tuy", "El Cartanal"
-                ]
-            ,
-            	
-                "Lander": [	"Ocumare Del Tuy", "La Democracia", "Santa Barbara"
-                ]
-            ,
-            	
-                "Paez": [	"Rio Chico", "El Guapo", "Tacarigua De La Laguna", "Paparo", "Sn Fernando Del Guapo"
-                ]
-            ,
-            	
-                "Paz Castillo": [	"Santa Lucia"
-                ]
-            ,
-            	
-                "Plaza": [	"Guarenas"
-                ]
-            ,
-            	
-                "Sucre": [	"Petare", "Leoncio Martinez", "Caucaguita", "Filas De Mariche", "La Dolorita"
-                ]
-            ,
-            	
-                "Urdaneta": [	"Cua", "Nueva Cua"
-                ]
-            ,
-            	
-                "Zamora": [	"Guatire", "Bolivar"
-                ]
-            ,
-            	
-                "Cristobal Rojas": [	"Charallave", "Las Brisas"
-                ]
-            ,
-            	
-                "Los Salias": [	"San Antonio Los Altos"
-                ]
-            ,
-            	
-                "Andres Bello": [	"San Jose De Barlovento", "Cumbo"
-                ]
-            ,
-            	
-                "Simon Bolivar": [	"San Fco De Yare", "S Antonio De Yare"
-                ]
-            ,
-            	
-                "Baruta": [	"Baruta", "El Cafetal", "Las Minas De Baruta"
-                ]
-            ,
-            	
-                "Carrizal": [	"Carrizal"
-                ]
-            ,
-            	
-                "Chacao": [	"Chacao"
-                ]
-            ,
-            	
-                "El Hatillo": [	"El Hatillo"
-                ]
-            ,
-            	
-                "Buroz": [	"Mamporal"
-                ]
-            ,
-            	
-                "Pedro Gual": [	"Cupira", "Machurucuto"
-                ]
-            ,
-			
-            },
-            "Monagas": {
-                	
-                "Acosta": [	"San Antonio", "San Francisco"
-                ]
-            ,
-            	
-                "Bolivar": [	"Caripito"
-                ]
-            ,
-            	
-                "Caripe": [	"Caripe", "Teresen", "El Guacharo", "San Agustin", "La Guanota", "Sabana De Piedra"
-                ]
-            ,
-            	
-                "Cedeño": [	"Caicara", "Areo", "San Felix", "Viento Fresco"
-                ]
-            ,
-            	
-                "Ezequiel Zamora": [	"Punta De Mata", "El Tejero"
-                ]
-            ,
-            	
-                "Libertador": [	"Temblador", "Tabasca", "Las Alhuacas", "Chaguaramas"
-                ]
-            ,
-            	
-                "Maturin": [	"El Furrial", "Jusepin", "El Corozo", "San Vicente", "La Pica", "Altos De Los Godos", "Boqueron", "Las Cocuizas", "Santa Cruz", "San Simon", "C.M. Maturin"
-                ]
-            ,
-            	
-                "Piar": [	"Aragua", "Chaguaramal", "Guanaguana", "Aparicio", "Taguaya", "El Pinto", "La Toscana"
-                ]
-            ,
-            	
-                "Punceres": [	"Quiriquire", "Cachipo"
-                ]
-            ,
-            	
-                "Sotillo": [	"Barrancas", "Los Barrancos De Fajardo"
-                ]
-            ,
-            	
-                "Aguasay": [	"Aguasay"
-                ]
-            ,
-            	
-                "Santa Barbara": [	"Santa Barbara"
-                ]
-            ,
-            	
-                "Uracoa": [	"Uracoa"
-                ]
-            ,
-			
-            },
-            "Nueva Esparta": {
-                	
-                "Arismendi": [	"La Asuncion"
-                ]
-            ,
-            	
-                "Diaz": [	"San Juan Bautista", "Zabala"
-                ]
-            ,
-            	
-                "Gomez": [	"Santa Ana", "Guevara", "Matasiete", "Bolivar", "Sucre"
-                ]
-            ,
-            	
-                "Maneiro": [	"Pampatar", "Aguirre"
-                ]
-            ,
-            	
-                "Marcano": [	"Juan Griego", "Adrian"
-                ]
-            ,
-            	
-                "Mariño": [	"Porlamar"
-                ]
-            ,
-            	
-                "Penin. De Macanao": [	"Boca Del Rio", "San Francisco"
-                ]
-            ,
-            	
-                "Villalba(I.Coche)": [	"San Pedro De Coche", "Vicente Fuentes"
-                ]
-            ,
-            	
-                "Tubores": [	"Punta De Piedras", "Los Barales"
-                ]
-            ,
-            	
-                "Antolin Del Campo": [	"Cm.La Plaza De Paraguachi"
-                ]
-            ,
-            	
-                "Garcia": [	"Valle Esp Santo", "Francisco Fajardo"
-                ]
-            ,
-			
-            },
-            "Portuguesa": {
-                	
-                "Araure": [	"Araure", "Rio Acarigua"
-                ]
-            ,
-            	
-                "Esteller": [	"Piritu", "Uveral"
-                ]
-            ,
-            	
-                "Guanare": [	"Guanare", "Cordoba", "San Juan Guanaguanare", "Virgen De La Coromoto", "San Jose De La Montaña"
-                ]
-            ,
-            	
-                "Guanarito": [	"Guanarito", "Trinidad De La Capilla", "Divina Pastora"
-                ]
-            ,
-            	
-                "Ospino": [	"Ospino", "La Aparicion", "La Estacion"
-                ]
-            ,
-            	
-                "Paez": [	"Acarigua", "Payara", "Pimpinela", "Ramon Peraza"
-                ]
-            ,
-            	
-                "Sucre": [	"Biscucuy", "Concepcion", "San Rafael Palo Alzado", "Uvencio A Velasquez", "San Jose De Saguaz", "Villa Rosa"
-                ]
-            ,
-            	
-                "Turen": [	"Villa Bruzual", "Canelones", "Santa Cruz", "San Isidro Labrador"
-                ]
-            ,
-            	
-                "M.Jose V De Unda": [	"Chabasquen", "Peña Blanca"
-                ]
-            ,
-            	
-                "Agua Blanca": [	"Agua Blanca"
-                ]
-            ,
-            	
-                "Papelon": [	"Papelon", "Caño Delgadito"
-                ]
-            ,
-            	
-                "Genaro Boconoito": [	"Boconoito", "Antolin Tovar Aquino"
-                ]
-            ,
-            	
-                "S Rafael De Onoto": [	"San Rafael De Onoto", "Santa Fe", "Thermo Morales"
-                ]
-            ,
-            	
-                "Santa Rosalia": [	"El Playon", "Florida"
-                ]
-            ,
-			
-            },
-            "Sucre": {
-                	
-                "Arismendi": [	"Rio Caribe", "San Juan De Las Galdonas", "Puerto Santo", "El Morro De Pto Santo", "Antonio Jose De Sucre"
-                ]
-            ,
-            	
-                "Benitez": [	"El Pilar", "El Rincon", "Guaraunos", "Tunapuicito", "Union", "Gral Fco. A Vasquez"
-                ]
-            ,
-            	
-                "Bermudez": [	"Santa Catalina", "Santa Rosa", "Santa Teresa", "Bolivar", "Macarapana"
-                ]
-            ,
-            	
-                "Cajigal": [	"Yaguaraparo", "Libertad", "Paujil"
-                ]
-            ,
-            	
-                "Mariño": [	"Irapa", "Campo Claro", "Soro", "San Antonio De Irapa", "Marabal"
-                ]
-            ,
-            	
-                "Mejia": [	"San Ant Del Golfo"
-                ]
-            ,
-            	
-                "Montes": [	"Cumanacoa", "Arenas", "Aricagua", "Cocollar", "San Fernando", "San Lorenzo"
-                ]
-            ,
-            	
-                "Ribero": [	"Cariaco", "Catuaro", "Rendon", "Santa Cruz", "Santa Maria"
-                ]
-            ,
-            	
-                "Sucre": [	"Altagracia", "Ayacucho", "Santa Ines", "Valentin Valiente", "San Juan", "Gran Mariscal", "Raul Leoni"
-                ]
-            ,
-            	
-                "Valdez": [	"Guiria", "Cristobal Colon", "Punta De Piedras", "Bideau"
-                ]
-            ,
-            	
-                "Andres E Blanco": [	"Mariño", "Romulo Gallegos"
-                ]
-            ,
-            	
-                "Libertador": [	"Tunapuy", "Campo Elias"
-                ]
-            ,
-            	
-                "Andres Mata": [	"San Jose De Aerocuar", "Tavera Acosta"
-                ]
-            ,
-            	
-                "Bolivar": [	"Mariguitar"
-                ]
-            ,
-            	
-                "Cruz S Acosta": [	"Araya", "Manicuare", "Chacopata"
-                ]
-            ,
-			
-            },
-            "Táchira": {
-                	
-                "Ayacucho": [	"Colon", "Rivas Berti", "San Pedro Del Rio"
-                ]
-            ,
-            	
-                "Bolivar": [	"San Ant Del Tachira", "Palotal", "Juan Vicente Gomez", "Isaias Medina Angarit"
-                ]
-            ,
-            	
-                "Capacho Nuevo": [	"Capacho Nuevo", "Juan German Roscio", "Roman Cardenas"
-                ]
-            ,
-            	
-                "Cardenas": [	"Tariba", "La Florida", "Amenodoro Rangel Lamus"
-                ]
-            ,
-            	
-                "Jauregui": [	"La Grita", "Emilio C. Guerrero", "Mons. Miguel A Salas"
-                ]
-            ,
-            	
-                "Junin": [	"Rubio", "Bramon", "La Petrolea", "Quinimari"
-                ]
-            ,
-            	
-                "Lobatera": [	"Lobatera", "Constitucion"
-                ]
-            ,
-            	
-                "San Cristobal": [	"La Concordia", "Pedro Maria Morantes", "Sn Juan Bautista", "San Sebastian", "Dr. Fco. Romero Lobo"
-                ]
-            ,
-            	
-                "Uribante": [	"Pregonero", "Cardenas", "Potosi", "Juan Pablo Peñaloza"
-                ]
-            ,
-            	
-                "Cordoba": [	"Sta. Ana Del Tachira"
-                ]
-            ,
-            	
-                "Garcia De Hevia": [	"La Fria", "Boca De Grita", "Jose Antonio Paez"
-                ]
-            ,
-            	
-                "Guasimos": [	"Palmira"
-                ]
-            ,
-            	
-                "Michelena": [	"Michelena"
-                ]
-            ,
-            	
-                "Libertador": [	"Abejales", "San Joaquin De Navay", "Doradas", "Emeterio Ochoa"
-                ]
-            ,
-            	
-                "Panamericano": [	"Coloncito", "La Palmita"
-                ]
-            ,
-            	
-                "Pedro Maria Ureña": [	"Ureña", "Nueva Arcadia"
-                ]
-            ,
-            	
-                "Sucre": [	"Queniquea", "San Pablo", "Eleazar Lopez Contrera"
-                ]
-            ,
-            	
-                "Andres Bello": [	"Cordero"
-                ]
-            ,
-            	
-                "Fernandez Feo": [	"Cm.San Rafael Del Piñal", "Santo Domingo", "Alberto Adriani"
-                ]
-            ,
-            	
-                "Capacho Viejo": [	"Capacho Viejo", "Cipriano Castro", "Manuel Felipe Rugeles"
-                ]
-            ,
-            	
-                "Samuel Maldonado": [	"La Tendida", "Bocono", "Hernandez"
-                ]
-            ,
-            	
-                "Seboruco": [	"Seboruco"
-                ]
-            ,
-            	
-                "Antonio Romulo C": [	"Las Mesas"
-                ]
-            ,
-            	
-                "Fco De Miranda": [	"San Jose De Bolivar"
-                ]
-            ,
-            	
-                "Jose M. Vargas": [	"El Cobre"
-                ]
-            ,
-            	
-                "Rafael Urdaneta": [	"Delicias"
-                ]
-            ,
-            	
-                "Simon Rodriguez": [	"San Simon"
-                ]
-            ,
-	
-                "Torbes": [	"San Josecito"
-                ]
-            ,
-            	
-                "San Judas Tadeo": [	"Umuquena"
-                ]
-            ,
-			
-            },
-            "Trujillo": {
-                	
-                "Rafael Rangel": [	"Betijoque", "Jose G Hernandez", "La Pueblita", "El Cedro"
-                ]
-            ,
-            	
-                "Bocono": [	"Bocono", "El Carmen", "Mosquey", "Ayacucho", "Burbusay", "General Rivas", "Monseñor Jauregui", "Rafael Rangel", "San Jose", "San Miguel", "Guaramacal", "La Vega De Guaramacal"
-                ]
-            ,
-            	
-                "Carache": [	"Carache", "La Concepcion", "Cuicas", "Panamericana", "Santa Cruz"
-                ]
-            ,
-            	
-                "Escuque": [	"Escuque", "Sabana Libre", "La Union", "Santa Rita"
-                ]
-            ,
-            	
-                "Trujillo": [	"Cristobal Mendoza", "Chiquinquira", "Matriz", "Monseñor Carrillo", "Cruz Carrillo", "Andres Linares", "Tres Esquinas"
-                ]
-            ,
-            	
-                "Urdaneta": [	"La Quebrada", "Jajo", "La Mesa", "Santiago", "Cabimbu", "Tuñame"
-                ]
-            ,
-            	
-                "Valera": [	"Mercedes Diaz", "Juan Ignacio Montilla", "La Beatriz", "Mendoza", "La Puerta", "San Luis"
-                ]
-            ,
-            	
-                "Candelaria": [	"Chejende", "Carrillo", "Cegarra", "Bolivia", "Manuel Salvador Ulloa", "San Jose", "Arnoldo Gabaldon"
-                ]
-            ,
-            	
-                "Monte Carmelo": [	"Monte Carmelo", "Buena Vista", "Sta Maria Del Horcon"
-                ]
-            ,
-            	
-                "Motatan": [	"Motatan", "El Baño", "Jalisco"
-                ]
-            ,
-            	
-                "Pampan": [	"Pampan", "Santa Ana", "La Paz", "Flor De Patria"
-                ]
-            ,
-            	
-                "S Rafael Carvajal": [	"Carvajal", "Antonio N Briceño", "Campo Alegre", "Jose Leonardo Suarez"
-                ]
-            ,
-            	
-                "Sucre": [	"Sabana De Mendoza", "Junin", "Valmore Rodriguez", "El Paraiso"
-                ]
-            ,
-            	
-                "Andres Bello": [	"Santa Isabel", "Araguaney", "El Jaguito", "La Esperanza"
-                ]
-            ,
-            	
-                "Bolivar": [	"Sabana Grande", "Cheregue", "Granados"
-                ]
-            ,
-            	
-                "J.F.Marquez C.": [	"El Socorro", "Los Caprichos", "Antonio Jose De Sucre"
-                ]
-            ,
-            	
-                "J.V. Campo Elias": [	"Campo Elias", "Arnoldo Gabaldon"
-                ]
-            ,
-            	
-                "La Ceiba": [	"Santa Apolonia", "La Ceiba", "El Progreso", "Tres De Febrero"
-                ]
-            ,
-            	
-                "Pampanito": [	"Pampanito", "Pampanito Ii", "La Concepcion"
-                ]
-            ,
-			
-            },
-            "Yaracuy": {
-                	
-                "Bolivar": [	"Aroa"
-                ]
-            ,
-            	
-                "Bruzual": [	"Chivacoa", "Campo Elias"
-                ]
-            ,
-            	
-                "Nirgua": [	"Nirgua", "Salom", "Temerla"
-                ]
-            ,
-            	
-                "San Felipe": [	"San Felipe", "Albarico", "San Javier"
-                ]
-            ,
-            	
-                "Sucre": [	"Guama"
-                ]
-            ,
-            	
-                "Urachiche": [	"Urachiche"
-                ]
-            ,
-            	
-                "Peña": [	"Yaritagua", "San Andres"
-                ]
-            ,
-            	
-                "Jose Antonio Paez": [	"Sabana De Parra"
-                ]
-            ,
-            	
-                "La Trinidad": [	"Boraure"
-                ]
-            ,
-            	
-                "Cocorote": [	"Cocorote"
-                ]
-            ,
-            	
-                "Independencia": [	"Independencia"
-                ]
-            ,
-            	
-                "Aristides Bastid": [	"San Pablo"
-                ]
-            ,
-            	
-                "Manuel Monge": [	"Yumare"
-                ]
-            ,
-            	
-                "Veroes": [	"Farriar", "El Guayabo"
-                ]
-            ,
-			
-            },
-            "Zulia": {
-                	
-                "Baralt": [	"General Urdaneta", "Libertador", "Manuel Guanipa Matos", "Marcelino Briceño", "San Timoteo", "Pueblo Nuevo"
-                ]
-            ,
-            	
-                "Santa Rita": [	"Pedro Lucas Urribarri", "Santa Rita", "Jose Cenovio Urribarr", "El Mene"
-                ]
-            ,
-            	
-                "Colon": [	"Santa Cruz Del Zulia", "Uribarri", "Moralito", "San Carlos Del Zulia", "Santa Barbara"
-                ]
-            ,
-            	
-                "Mara": [	"Luis De Vicente", "Ricaurte", "Mons.Marcos Sergio G", "San Rafael", "Las Parcelas", "Tamare", "La Sierrita"
-                ]
-            ,
-            	
-                "Maracaibo": [	"Bolivar", "Coquivacoa", "Cristo De Aranza", "Chiquinquira", "Santa Lucia", "Olegario Villalobos", "Juana De Avila", "Caracciolo Parra Perez", "Idelfonzo Vasquez", "Cacique Mara", "Cecilio Acosta", "Raul Leoni", "Francisco Eugenio B", "Manuel Dagnino", "Luis Hurtado Higuera", "Luis Hurtado Higuera", "Venancio Pulgar", "Antonio Borjas Romero", "San Isidro"
-                ]
-            ,
-            	
-                "Miranda": [	"Faria", "San Antonio", "Ana Maria Campos", "San Jose", "Altagracia"
-                ]
-            ,
-            	
-                "Indigena Guajira": [	"Guajira", "Elias Sanchez Rubio", "Sinamaica", "Alta Guajira"
-                ]
-            ,
-            	
-                "Machiques De P": [	"San Jose De Perija", "Bartolome De Las Casas", "Libertad", "Rio Negro"
-                ]
-            ,
-            	
-                "Sucre": [	"Gibraltar", "Heras", "M.Arturo Celestino A", "Romulo Gallegos", "Bobures", "El Batey"
-                ]
-            ,
-            	
-                "La Cañada De U.": [	"Andres Bello", "Potreritos", "El Carmelo", "Chiquinquira", "Concepcion"
-                ]
-            ,
-            	
-                "Lagunillas": [	"Eleazar Lopez C", "Alonso De Ojeda", "Venezuela", "Campo Lara", "Libertad", "El Danto"
-                ]
-            ,
-            	
-                "Catatumbo": [	"Udon Perez", "Encontrados"
-                ]
-            ,
-            	
-                "Rosario De Perija": [	"Donaldo Garcia", "Sixto Zambrano", "El Rosario"
-                ]
-            ,
-            	
-                "Cabimas": [	"Ambrosio", "German Rios Linares", "Jorge Hernandez", "La Rosa", "Punta Gorda", "Carmen Herrera", "San Benito", "Romulo Betancourt", "Aristides Calvani"
-                ]
-            ,
-            	
-                "Valmore Rodriguez": [	"Raul Cuenca", "La Victoria", "Rafael Urdaneta"
-                ]
-            ,
-            	
-                "Jesus E Lossada": [	"Jose Ramon Yepez", "La Concepcion", "San Jose", "Mariano Parra Leon"
-                ]
-            ,
-            	
-                "Almirante P": [	"Monagas", "Isla De Toas"
-                ]
-            ,
-            	
-                "San Francisco": [	"Marcial Hernandez", "Francisco Ochoa", "San Francisco", "El Bajo", "Domitila Flores", "Los Cortijos", "Jose Domingo Rus"
-                ]
-            ,
-            	
-                "Jesus M Semprun": [	"Bari", "Jesus M Semprun"
-                ]
-            ,
-            	
-                "Francisco J Pulg": [	"Simon Rodriguez", "Carlos Quevedo", "Francisco J Pulgar", "Agustin Codazzi"
-                ]
-            ,
-            	
-                "Simon Bolivar": [	"Rafael Maria Baralt", "Manuel Manrique", "Rafael Urdaneta"
-                ]
-            ,
-			
-            },
-            "Amazonas": {
-                	
-                "Atures": [	"Fernando Giron Tovar", "Luis Alberto Gomez", "Parhueña", "Platanillal"
-                ]
-            ,
-            	
-                "Atabapo": [	"San Fernando De Ataba", "Ucata", "Yapacana", "Caname"
-                ]
-            ,
-            	
-                "Maroa": [	"Maroa", "Victorino", "Comunidad"
-                ]
-            ,
-            	
-                "Rio Negro": [	"San Carlos De Rio Neg", "Solano", "Casiquiare", "Cocuy"
-                ]
-            ,
-            	
-                "Autana": [	"Isla De Raton", "Samariapo", "Sipapo", "Munduapo", "Guayapo"
-                ]
-            ,
-            	
-                "Manapiare": [	"San Juan De Manapiare", "Alto Ventuari", "Medio Ventuari", "Bajo Ventuari"
-                ]
-            ,
-            	
-                "Alto Orinoco": [	"La Esmeralda", "Huachamacare", "Marawaka", "Mavaca", "Sierra Parima"
-                ]
-            ,
-			
-            },
-            "Delta Amacuro": {
-                	
-                "Tucupita": [	"San Jose", "Virgen Del Valle", "San Rafael", "Jose Vidal Marcano", "Leonardo Ruiz Pineda", "Mons. Argimiro Garcia", "Mons. Argimiro Garcia", "Mons. Argimiro Garcia", "Mcl.Antonio J De Sucre", "Juan Millan"
-                ]
-            ,
-            	
-                "Pedernales": [	"Pedernales", "Luis B. Prieto F."
-                ]
-            ,
-            	
-                "Antonio Diaz": [	"Curiapo", "Santos De Abelgas", "Manuel Renaud", "Padre Barral", "Aniceto Lugo", "Almirante Luis Brion"
-                ]
-            ,
-            	
-                "Casacoima": [	"Imataca", "Romulo Gallegos", "Juan Bautista Arismen", "Manuel Piar"
-                ]
-            ,
-			
-            },
-            "La Guaira": {
-                	
-                "La Guaira": [	"Caraballeda", "Carayaca", "Caruao", "Catia La Mar", "La Guaira", "Macuto", "Maiquetia", "Naiguata", "El Junko", "Urimare", "Carlos Soublette"
-                ]
-			
-            }
-        };
-        
-        // Función para cargar municipios según el estado seleccionado
-        function cargarMunicipios() {
-            const estadoSelect = document.getElementById('estado');
-            const municipioSelect = document.getElementById('municipio');
-            const parroquiaSelect = document.getElementById('parroquia');
+        // Función para mostrar/ocultar campo de adjunto
+        function toggleFileInput(documentId) {
+            const fileGroup = document.getElementById(`fileGroup-${documentId}`);
+            const radioValue = document.querySelector(`input[name="posee_${documentId}"]:checked`).value;
             
-            const estado = estadoSelect.value;
-            
-            // Limpiar selects
-            municipioSelect.innerHTML = '<option value="">Seleccione un municipio...</option>';
-            parroquiaSelect.innerHTML = '<option value="">Primero seleccione un municipio</option>';
-            
-            // Deshabilitar parroquia
-            parroquiaSelect.disabled = true;
-            
-            if (!estado) {
-                municipioSelect.disabled = true;
-                return;
-            }
-            
-            // Habilitar municipio
-            municipioSelect.disabled = false;
-            
-            // Obtener municipios para el estado seleccionado
-            const municipios = ubicaciones[estado] ? Object.keys(ubicaciones[estado]) : [];
-            
-            if (municipios.length > 0) {
-                municipios.forEach(municipio => {
-                    const option = document.createElement('option');
-                    option.value = municipio;
-                    option.textContent = municipio;
-                    municipioSelect.appendChild(option);
-                });
+            if (radioValue === 'si') {
+                fileGroup.classList.add('visible');
             } else {
-                const option = document.createElement('option');
-                option.value = "Desconocido";
-                option.textContent = "No disponible";
-                municipioSelect.appendChild(option);
-                municipioSelect.disabled = true;
+                fileGroup.classList.remove('visible');
+                document.getElementById(`file-${documentId}`).value = '';
+                document.getElementById(`fileName-${documentId}`).classList.remove('visible');
             }
         }
         
-        // Función para cargar parroquias según el municipio seleccionado
-        function cargarParroquias() {
-            const estadoSelect = document.getElementById('estado');
-            const municipioSelect = document.getElementById('municipio');
-            const parroquiaSelect = document.getElementById('parroquia');
+        // Función para mostrar nombre del archivo seleccionado
+        function showFileName(documentId) {
+            const fileInput = document.getElementById(`file-${documentId}`);
+            const fileNameDisplay = document.getElementById(`fileName-${documentId}`);
             
-            const estado = estadoSelect.value;
-            const municipio = municipioSelect.value;
-            
-            // Limpiar select
-            parroquiaSelect.innerHTML = '<option value="">Seleccione una parroquia...</option>';
-            
-            if (!municipio || !estado) {
-                parroquiaSelect.disabled = true;
-                return;
-            }
-            
-            // Habilitar parroquia
-            parroquiaSelect.disabled = false;
-            
-            // Obtener parroquias para el municipio seleccionado
-            const parroquias = ubicaciones[estado] && ubicaciones[estado][municipio] 
-                ? ubicaciones[estado][municipio] 
-                : [];
-            
-            if (parroquias.length > 0) {
-                parroquias.forEach(parroquia => {
-                    const option = document.createElement('option');
-                    option.value = parroquia;
-                    option.textContent = parroquia;
-                    parroquiaSelect.appendChild(option);
-                });
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `Archivo seleccionado: ${fileInput.files[0].name}`;
+                fileNameDisplay.classList.add('visible');
             } else {
-                const option = document.createElement('option');
-                option.value = "Desconocida";
-                option.textContent = "No disponible";
-                parroquiaSelect.appendChild(option);
-                parroquiaSelect.disabled = true;
+                fileNameDisplay.classList.remove('visible');
             }
         }
         
-        // Función para buscar apartamentos
-        function searchAptos(query) {
-            const resultsContainer = document.getElementById('aptoResults');
-            const indicator = document.getElementById('aptoIndicator');
-            
-            // Limpiar resultados anteriores
-            resultsContainer.innerHTML = '';
-            resultsContainer.style.display = 'none';
-            
-            // Validar el apto escrito
-            const isValid = validarApto();
-            
-            if (query.trim() === '') {
-                return;
-            }
-            
-            // Filtrar opciones
-            const filtered = opcionesApto.filter(option => 
-                option.toLowerCase().includes(query.toLowerCase())
-            );
-            
-            if (filtered.length > 0) {
-                // Mostrar resultados
-                filtered.forEach(apto => {
-                    const item = document.createElement('div');
-                    item.className = 'search-result-item';
-                    item.textContent = apto;
-                    item.onclick = () => {
-                        document.getElementById('apto').value = apto;
-                        resultsContainer.style.display = 'none';
-                        validarApto();
-                    };
-                    resultsContainer.appendChild(item);
-                });
-                
-                resultsContainer.style.display = 'block';
-            }
-        }
-        
-        // Validar si el apto seleccionado es válido
-        function validarApto() {
-            const aptoInput = document.getElementById('apto');
-            const apto = aptoInput.value;
-            const indicator = document.getElementById('aptoIndicator');
-            
-            const isValid = opcionesApto.includes(apto);
-            
-            if (apto) {
-                indicator.style.display = 'block';
-                if (isValid) {
-                    indicator.innerHTML = '<i class="fas fa-check-circle"></i> Apartamento válido';
-                    indicator.className = 'apto-indicator valid';
-                    aptoInput.style.borderColor = '#10b981';
-                } else {
-                    indicator.innerHTML = '<i class="fas fa-exclamation-circle"></i> Apartamento inválido';
-                    indicator.className = 'apto-indicator invalid';
-                    aptoInput.style.borderColor = '#ef4444';
-                }
-            } else {
-                indicator.style.display = 'none';
-                aptoInput.style.borderColor = '#334155';
-            }
-            
-            return isValid;
-        }
-        
-        // Cerrar resultados al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.search-container')) {
-                document.getElementById('aptoResults').style.display = 'none';
-            }
-        });
-        
-        // Función para mostrar/ocultar secciones según el interés seleccionado
-        function toggleInterestDetails() {
-            const interes = document.getElementById('interes').value;
-            
-            // Ocultar todas las secciones primero
-            document.getElementById('comunaDetails').classList.add('hidden');
-            document.getElementById('fundacionDetails').classList.add('hidden');
-            document.getElementById('cursosDetails').classList.add('hidden');
-            document.getElementById('empresaDetails').classList.add('hidden');
-            
-            // Mostrar la sección correspondiente
-            if (interes === 'Comuna') {
-                document.getElementById('comunaDetails').classList.remove('hidden');
-            } else if (interes === 'Fundación') {
-                document.getElementById('fundacionDetails').classList.remove('hidden');
-            } else if (interes === 'Cursos') {
-                document.getElementById('cursosDetails').classList.remove('hidden');
-            } else if (interes === 'Empresa') {
-                document.getElementById('empresaDetails').classList.remove('hidden');
-            }
-        }
-        
-        // Función para mostrar campos adicionales según la opción de comuna
-        function toggleComunaOptions() {
-            const comunaOption = document.getElementById('comunaOption').value;
-            
-            // Ocultar todos los grupos primero
-            document.getElementById('nuevaComunaGroup').classList.add('hidden');
-            document.getElementById('parqueCentralGroup').classList.add('hidden');
-            document.getElementById('aptoGroup').classList.add('hidden');
-            document.getElementById('terminosGroup').classList.add('hidden');
-            
-            // Mostrar grupos según la opción seleccionada
-            if (comunaOption === 'Agregar Comuna') {
-                document.getElementById('nuevaComunaGroup').classList.remove('hidden');
-            } else if (comunaOption === 'Parqué Central') {
-                document.getElementById('parqueCentralGroup').classList.remove('hidden');
-            }
-        }
-        
-        // Función para mostrar campo de apto y términos cuando se selecciona una residencia
-        function toggleAptoField() {
-            const residencia = document.getElementById('residencia').value;
-            
-            if (residencia) {
-                document.getElementById('aptoGroup').classList.remove('hidden');
-                document.getElementById('terminosGroup').classList.remove('hidden');
-            } else {
-                document.getElementById('aptoGroup').classList.add('hidden');
-                document.getElementById('terminosGroup').classList.add('hidden');
-            }
-        }
-        
-        // Función para enviar el formulario a Google Sheets
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Establecer la fecha actual en el campo oculto
-            const now = new Date();
-            document.getElementById('fechaEnvio').value = now.toISOString();
-            
-            // Validación básica
+        // Función para validar el formulario
+        function validateForm() {
             const requiredFields = document.querySelectorAll('[required]');
             let valid = true;
             
@@ -2502,22 +1135,31 @@
                     valid = false;
                     field.classList.add('error');
                     setTimeout(() => field.classList.remove('error'), 500);
-                } else {
-                    field.style.borderColor = '#334155';
                 }
             });
             
-            // Validar apartamento si es necesario
-            if (document.getElementById('aptoGroup') && 
-                !document.getElementById('aptoGroup').classList.contains('hidden')) {
-                if (!validarApto()) {
+            // Validar documentos que requieren adjunto
+            const documentItems = document.querySelectorAll('.document-item');
+            documentItems.forEach(item => {
+                const radioYes = item.querySelector('input[type="radio"][value="si"]');
+                const radioNo = item.querySelector('input[type="radio"][value="no"]');
+                const fileInput = item.querySelector('input[type="file"]');
+                
+                if (radioYes.checked && !fileInput.files.length) {
                     valid = false;
-                    document.getElementById('apto').classList.add('error');
-                    setTimeout(() => document.getElementById('apto').classList.remove('error'), 500);
+                    fileInput.closest('.file-input-group').classList.add('error');
+                    setTimeout(() => fileInput.closest('.file-input-group').classList.remove('error'), 500);
                 }
-            }
+            });
             
-            if (!valid) {
+            return valid;
+        }
+        
+        // Función para enviar el formulario
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
                 alert('Por favor, complete todos los campos obligatorios correctamente.');
                 return;
             }
@@ -2528,77 +1170,41 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             submitBtn.disabled = true;
             
-            // Crear objeto FormData
-            const formData = new FormData(this);
-            
-            // Enviar datos a Google Sheets
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(response => {
-                    if (response.ok) {
-                        // Mostrar mensaje de éxito
-                        const successMessage = document.getElementById('successMessage');
-                        successMessage.style.display = 'flex';
-                        
-                        // Ocultar mensaje después de 3 segundos
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 3000);
-                        
-                        // Resetear formulario
-                        this.reset();
-                        
-                        // Ocultar todas las secciones de interés
-                        document.getElementById('comunaDetails').classList.add('hidden');
-                        document.getElementById('fundacionDetails').classList.add('hidden');
-                        document.getElementById('cursosDetails').classList.add('hidden');
-                        document.getElementById('empresaDetails').classList.add('hidden');
-                        
-                        // Ocultar indicador de apto
-                        document.getElementById('aptoIndicator').style.display = 'none';
-                        
-                        // Reiniciar selects de ubicación
-                        document.getElementById('municipio').innerHTML = '<option value="">Primero seleccione un estado</option>';
-                        document.getElementById('parroquia').innerHTML = '<option value="">Primero seleccione un municipio</option>';
-                        document.getElementById('municipio').disabled = true;
-                        document.getElementById('parroquia').disabled = true;
-                    } else {
-                        throw new Error('Error en la respuesta del servidor');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.');
-                })
-                .finally(() => {
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
-                });
+            // Aquí iría la lógica para enviar los datos al servidor
+            // Por ahora simulamos un envío exitoso
+            setTimeout(() => {
+                // Mostrar mensaje de éxito
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'flex';
+                
+                // Ocultar mensaje después de 3 segundos
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+                
+                // Resetear formulario
+                this.reset();
+                
+                // Restaurar botón
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }, 1500);
         });
         
-        // Inicialización: establecer fecha mínima para fecha de nacimiento (18 años atrás)
+        // Inicialización: establecer fechas mínimas y máximas
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date();
-            const minDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
-            const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+            const now = new Date();
             
-            document.getElementById('nacimiento').min = minDate.toISOString().split('T')[0];
-            document.getElementById('nacimiento').max = maxDate.toISOString().split('T')[0];
+            // Establecer fechas mínimas y máximas para fechas de viaje
+            document.getElementById('fecha_salida').min = new Date(now.getTime() - (365 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
+            document.getElementById('fecha_salida').max = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
             
-            // Inicializar animaciones
-            document.querySelectorAll('input, select').forEach(el => {
-                el.addEventListener('focus', function() {
-                    this.style.borderColor = '#6366f1';
-                    this.previousElementSibling.style.color = '#6366f1';
-                });
-                el.addEventListener('blur', function() {
-                    this.style.borderColor = '#334155';
-                    this.previousElementSibling.style.color = '#94a3b8';
-                });
-            });
+            document.getElementById('fecha_llegada').min = new Date(now.getTime() - (365 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
+            document.getElementById('fecha_llegada').max = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
             
-            // Deshabilitar municipio y parroquia inicialmente
-            document.getElementById('municipio').disabled = true;
-            document.getElementById('parroquia').disabled = true;
+            // Establecer año máximo para el vehículo
+            document.getElementById('anio').max = new Date().getFullYear();
         });
     </script>
 </body>
