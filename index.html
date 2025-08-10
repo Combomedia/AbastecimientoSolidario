@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Vehículos de Transporte</title>
+    <title>Abastecimiento Solidario</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -530,7 +530,15 @@
         .file-name.visible {
             display: block;
         }
-        
+        .logo.changing {
+    animation: emojiBlurChange 0.5s ease-out;
+}
+
+@keyframes emojiBlurChange {
+    0% { transform: scale(1); filter: blur(0); opacity: 1; }
+    50% { transform: scale(0.5); filter: blur(5px); opacity: 0; }
+    100% { transform: scale(1); filter: blur(0); opacity: 1; }
+}
         /* Responsive */
         @media (max-width: 768px) {
             .form-row {
@@ -609,7 +617,7 @@
                 <span class="logo" id="logoEmoji" style="font-size: 2.5rem;">🚚</span>
             </div>
             <div class="header-content">
-                <h1>Registro de Vehículos de Transporte</h1>
+                <h1>Abastecimiento Solidario</h1>
                 <p>Completa los datos para registrar tu vehículo de transporte de alimentos</p>
             </div>
         </div>
@@ -717,7 +725,369 @@
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
                 </div>
-            
+                
+                <h2 class="form-title">Documentación Requerida</h2>
+                
+                <div class="document-section">
+                    <!-- Documento 1 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Cédula</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_cedula" value="si" onchange="toggleFileInput('cedula')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_cedula" value="no" onchange="toggleFileInput('cedula')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-cedula">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Foto de Cédula
+                                </div>
+                                <input type="file" id="file-cedula" name="file-cedula" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('cedula')">
+                            </div>
+                            <div class="file-name" id="fileName-cedula"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 2 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Licencia</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_licencia" value="si" onchange="toggleFileInput('licencia')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_licencia" value="no" onchange="toggleFileInput('licencia')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-licencia">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Foto de Licencia
+                                </div>
+                                <input type="file" id="file-licencia" name="file-licencia" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('licencia')">
+                            </div>
+                            <div class="file-name" id="fileName-licencia"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 3 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Foto de Certificado Médico</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_medico" value="si" onchange="toggleFileInput('certificado_medico')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_medico" value="no" onchange="toggleFileInput('certificado_medico')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_medico">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado Médico
+                                </div>
+                                <input type="file" id="file-certificado_medico" name="file-certificado_medico" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_medico')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_medico"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 4 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Inscripción en el RUPDAE</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_rupdae" value="si" onchange="toggleFileInput('rupdae')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_rupdae" value="no" onchange="toggleFileInput('rupdae')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-rupdae">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado RUPDAE
+                                </div>
+                                <input type="file" id="file-rupdae" name="file-rupdae" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('rupdae')">
+                            </div>
+                            <div class="file-name" id="fileName-rupdae"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 5 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Permiso de Movilización de Productos de Origen Animal</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_permiso_animal" value="si" onchange="toggleFileInput('permiso_animal')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_permiso_animal" value="no" onchange="toggleFileInput('permiso_animal')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-permiso_animal">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Permiso
+                                </div>
+                                <input type="file" id="file-permiso_animal" name="file-permiso_animal" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('permiso_animal')">
+                            </div>
+                            <div class="file-name" id="fileName-permiso_animal"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 6 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Solicitud de Registro para Transporte y/o Comercialización de Productos Pesqueros</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_solicitud_pesqueros" value="si" onchange="toggleFileInput('solicitud_pesqueros')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_solicitud_pesqueros" value="no" onchange="toggleFileInput('solicitud_pesqueros')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-solicitud_pesqueros">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Solicitud
+                                </div>
+                                <input type="file" id="file-solicitud_pesqueros" name="file-solicitud_pesqueros" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('solicitud_pesqueros')">
+                            </div>
+                            <div class="file-name" id="fileName-solicitud_pesqueros"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 7 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Inspección y Certificación de Actividades Conexas</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_inspeccion" value="si" onchange="toggleFileInput('inspeccion')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_inspeccion" value="no" onchange="toggleFileInput('inspeccion')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-inspeccion">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificación
+                                </div>
+                                <input type="file" id="file-inspeccion" name="file-inspeccion" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('inspeccion')">
+                            </div>
+                            <div class="file-name" id="fileName-inspeccion"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 8 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Salud</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_salud" value="si" onchange="toggleFileInput('certificado_salud')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_salud" value="no" onchange="toggleFileInput('certificado_salud')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_salud">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado de Salud
+                                </div>
+                                <input type="file" id="file-certificado_salud" name="file-certificado_salud" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_salud')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_salud"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 9 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Manipulador de Alimentos</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_manipulador" value="si" onchange="toggleFileInput('manipulador')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_manipulador" value="no" onchange="toggleFileInput('manipulador')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-manipulador">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado
+                                </div>
+                                <input type="file" id="file-manipulador" name="file-manipulador" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('manipulador')">
+                            </div>
+                            <div class="file-name" id="fileName-manipulador"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 10 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificación de Prestación de Servicios Transporte de Carga</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificacion_servicios" value="si" onchange="toggleFileInput('certificacion_servicios')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificacion_servicios" value="no" onchange="toggleFileInput('certificacion_servicios')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificacion_servicios">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificación
+                                </div>
+                                <input type="file" id="file-certificacion_servicios" name="file-certificacion_servicios" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificacion_servicios')">
+                            </div>
+                            <div class="file-name" id="fileName-certificacion_servicios"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 11 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Permiso Sanitario para Vehículos</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_permiso_sanitario" value="si" onchange="toggleFileInput('permiso_sanitario')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_permiso_sanitario" value="no" onchange="toggleFileInput('permiso_sanitario')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-permiso_sanitario">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Permiso Sanitario
+                                </div>
+                                <input type="file" id="file-permiso_sanitario" name="file-permiso_sanitario" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('permiso_sanitario')">
+                            </div>
+                            <div class="file-name" id="fileName-permiso_sanitario"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 12 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Póliza de Seguro</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_poliza" value="si" onchange="toggleFileInput('poliza')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_poliza" value="no" onchange="toggleFileInput('poliza')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-poliza">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Póliza de Seguro
+                                </div>
+                                <input type="file" id="file-poliza" name="file-poliza" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('poliza')">
+                            </div>
+                            <div class="file-name" id="fileName-poliza"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 13 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Certificado de Registro de Vehículo</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_certificado_registro" value="si" onchange="toggleFileInput('certificado_registro')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_certificado_registro" value="no" onchange="toggleFileInput('certificado_registro')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-certificado_registro">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Certificado de Registro
+                                </div>
+                                <input type="file" id="file-certificado_registro" name="file-certificado_registro" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('certificado_registro')">
+                            </div>
+                            <div class="file-name" id="fileName-certificado_registro"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 14 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Documentación sanitaria</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_documentacion_sanitaria" value="si" onchange="toggleFileInput('documentacion_sanitaria')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_documentacion_sanitaria" value="no" onchange="toggleFileInput('documentacion_sanitaria')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-documentacion_sanitaria">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Documentación Sanitaria
+                                </div>
+                                <input type="file" id="file-documentacion_sanitaria" name="file-documentacion_sanitaria" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('documentacion_sanitaria')">
+                            </div>
+                            <div class="file-name" id="fileName-documentacion_sanitaria"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Documento 15 -->
+                    <div class="document-item">
+                        <div class="doc-title">
+                            <div class="doc-name">Hoja de ruta para el control</div>
+                            <div class="doc-option">
+                                <label>
+                                    <input type="radio" name="posee_hoja_ruta" value="si" onchange="toggleFileInput('hoja_ruta')"> Sí
+                                </label>
+                                <label>
+                                    <input type="radio" name="posee_hoja_ruta" value="no" onchange="toggleFileInput('hoja_ruta')"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="file-input-group" id="fileGroup-hoja_ruta">
+                            <div class="file-input-wrapper">
+                                <div class="file-input-button">
+                                    <i class="fas fa-upload"></i> Adjuntar Hoja de Ruta
+                                </div>
+                                <input type="file" id="file-hoja_ruta" name="file-hoja_ruta" accept=".jpg,.jpeg,.png,.pdf" onchange="showFileName('hoja_ruta')">
+                            </div>
+                            <div class="file-name" id="fileName-hoja_ruta"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <input type="hidden" id="fechaEnvio" name="fechaEnvio">
@@ -736,6 +1106,23 @@
     </div>
 
     <script>
+        // Emojis para rotación
+const emojis = ['🚚', '📦', '🧀', '🗺️'];
+let currentEmojiIndex = 0;
+const logoEmoji = document.getElementById('logoEmoji');
+
+// Función para cambiar el emoji con animación de desenfoque
+function changeEmoji() {
+    currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
+    logoEmoji.classList.add('changing');
+    setTimeout(() => {
+        logoEmoji.textContent = emojis[currentEmojiIndex];
+        logoEmoji.classList.remove('changing');
+    }, 250);
+}
+
+// Iniciar la rotación de emojis
+setInterval(changeEmoji, 2000);
         // Función para mostrar/ocultar campo de adjunto
         function toggleFileInput(documentId) {
             const fileGroup = document.getElementById(`fileGroup-${documentId}`);
@@ -790,11 +1177,44 @@
                 }
             });
             
+            // Validar fechas (llegada debe ser después de salida)
+            const fechaSalida = new Date(document.getElementById('fecha_salida').value);
+            const fechaLlegada = new Date(document.getElementById('fecha_llegada').value);
+            
+            if (fechaSalida && fechaLlegada && fechaLlegada < fechaSalida) {
+                valid = false;
+                alert('La fecha de llegada debe ser posterior a la fecha de salida');
+                document.getElementById('fecha_llegada').classList.add('error');
+                setTimeout(() => document.getElementById('fecha_llegada').classList.remove('error'), 500);
+            }
+            
             return valid;
         }
         
+        // Función para enviar el formulario a Google Sheets
+        async function sendToGoogleSheets(formData) {
+            // URL de Google Apps Script (debes reemplazar con tu URL)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwY4hqY0QvJ1rY7X8KqLd3e7d6a7f5g6h7i8j9k0l/exec';
+            
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                
+                return response;
+            } catch (error) {
+                console.error('Error al enviar datos:', error);
+                throw error;
+            }
+        }
+        
         // Función para enviar el formulario
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             if (!validateForm()) {
@@ -808,9 +1228,16 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             submitBtn.disabled = true;
             
-            // Aquí iría la lógica para enviar los datos al servidor
-            // Por ahora simulamos un envío exitoso
-            setTimeout(() => {
+            // Establecer fecha de envío
+            document.getElementById('fechaEnvio').value = new Date().toISOString();
+            
+            try {
+                // Crear FormData con todos los campos
+                const formData = new FormData(this);
+                
+                // Enviar datos a Google Sheets
+                await sendToGoogleSheets(formData);
+                
                 // Mostrar mensaje de éxito
                 const successMessage = document.getElementById('successMessage');
                 successMessage.style.display = 'flex';
@@ -823,10 +1250,21 @@
                 // Resetear formulario
                 this.reset();
                 
+                // Ocultar todos los campos de archivos
+                const fileGroups = document.querySelectorAll('.file-input-group');
+                fileGroups.forEach(group => group.classList.remove('visible'));
+                
+                // Limpiar nombres de archivos
+                const fileNames = document.querySelectorAll('.file-name');
+                fileNames.forEach(name => name.classList.remove('visible'));
+                
+            } catch (error) {
+                alert('Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.');
+            } finally {
                 // Restaurar botón
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
-            }, 1500);
+            }
         });
         
         // Inicialización: establecer fechas mínimas y máximas
@@ -847,4 +1285,3 @@
     </script>
 </body>
 </html>
-
