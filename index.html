@@ -614,7 +614,7 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <span class="logo" id="logoEmoji" style="font-size: 2.5rem;">🚚</span>
+                <span class="logo" id="logoEmoji" style="font-size: 2.5rem;">📦</span>
             </div>
             <div class="header-content">
                 <h1>Abastecimiento Solidario</h1>
@@ -624,7 +624,7 @@
         
         <div class="form-container">
             <h2 class="form-title">Información del Vehículo</h2>
-            <form id="registrationForm">
+            <form id="registrationForm" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-column">
                         <div class="form-group">
@@ -1107,22 +1107,23 @@
 
     <script>
         // Emojis para rotación
-const emojis = ['🚚', '📦', '🧀', '🗺️'];
-let currentEmojiIndex = 0;
-const logoEmoji = document.getElementById('logoEmoji');
+        const emojis = ['📦', '🧀', '🚚', '🗺️'];
+        let currentEmojiIndex = 0;
+        const logoEmoji = document.getElementById('logoEmoji');
 
-// Función para cambiar el emoji con animación de desenfoque
-function changeEmoji() {
-    currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
-    logoEmoji.classList.add('changing');
-    setTimeout(() => {
-        logoEmoji.textContent = emojis[currentEmojiIndex];
-        logoEmoji.classList.remove('changing');
-    }, 250);
-}
+        // Función para cambiar el emoji con animación de desenfoque
+        function changeEmoji() {
+            currentEmojiIndex = (currentEmojiIndex + 1) % emojis.length;
+            logoEmoji.classList.add('changing');
+            setTimeout(() => {
+                logoEmoji.textContent = emojis[currentEmojiIndex];
+                logoEmoji.classList.remove('changing');
+            }, 250);
+        }
 
-// Iniciar la rotación de emojis
-setInterval(changeEmoji, 2000);
+        // Iniciar la rotación de emojis
+        setInterval(changeEmoji, 2000);
+        
         // Función para mostrar/ocultar campo de adjunto
         function toggleFileInput(documentId) {
             const fileGroup = document.getElementById(`fileGroup-${documentId}`);
@@ -1170,7 +1171,7 @@ setInterval(changeEmoji, 2000);
                 const radioNo = item.querySelector('input[type="radio"][value="no"]');
                 const fileInput = item.querySelector('input[type="file"]');
                 
-                if (radioYes.checked && !fileInput.files.length) {
+                if (radioYes && radioYes.checked && !fileInput.files.length) {
                     valid = false;
                     fileInput.closest('.file-input-group').classList.add('error');
                     setTimeout(() => fileInput.closest('.file-input-group').classList.remove('error'), 500);
@@ -1191,10 +1192,10 @@ setInterval(changeEmoji, 2000);
             return valid;
         }
         
-        // Función para enviar el formulario a Google Sheets
-        async function sendToGoogleSheets(formData) {
-            // URL de Google Apps Script (debes reemplazar con tu URL)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwY4hqY0QvJ1rY7X8KqLd3e7d6a7f5g6h7i8j9k0l/exec';
+        // Función para enviar el formulario a Google Apps Script
+        async function submitToGoogleAppsScript(formData) {
+            // URL del Web App de Google Apps Script (REEMPLAZAR CON TU PROPIA URL)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyuSexbco31PSAMjOVCxl0OZyFXG1RhuogrZxXTsPNy8cqeqHC-Lym1HR641uRzJOImHA/exec';
             
             try {
                 const response = await fetch(scriptURL, {
@@ -1206,7 +1207,8 @@ setInterval(changeEmoji, 2000);
                     throw new Error('Error en la respuesta del servidor');
                 }
                 
-                return response;
+                const result = await response.json();
+                return result;
             } catch (error) {
                 console.error('Error al enviar datos:', error);
                 throw error;
@@ -1235,31 +1237,36 @@ setInterval(changeEmoji, 2000);
                 // Crear FormData con todos los campos
                 const formData = new FormData(this);
                 
-                // Enviar datos a Google Sheets
-                await sendToGoogleSheets(formData);
+                // Enviar datos a Google Apps Script
+                const result = await submitToGoogleAppsScript(formData);
                 
-                // Mostrar mensaje de éxito
-                const successMessage = document.getElementById('successMessage');
-                successMessage.style.display = 'flex';
-                
-                // Ocultar mensaje después de 3 segundos
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 3000);
-                
-                // Resetear formulario
-                this.reset();
-                
-                // Ocultar todos los campos de archivos
-                const fileGroups = document.querySelectorAll('.file-input-group');
-                fileGroups.forEach(group => group.classList.remove('visible'));
-                
-                // Limpiar nombres de archivos
-                const fileNames = document.querySelectorAll('.file-name');
-                fileNames.forEach(name => name.classList.remove('visible'));
+                if (result.success) {
+                    // Mostrar mensaje de éxito
+                    const successMessage = document.getElementById('successMessage');
+                    successMessage.style.display = 'flex';
+                    
+                    // Ocultar mensaje después de 3 segundos
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                    
+                    // Resetear formulario
+                    this.reset();
+                    
+                    // Ocultar todos los campos de archivos
+                    const fileGroups = document.querySelectorAll('.file-input-group');
+                    fileGroups.forEach(group => group.classList.remove('visible'));
+                    
+                    // Limpiar nombres de archivos
+                    const fileNames = document.querySelectorAll('.file-name');
+                    fileNames.forEach(name => name.classList.remove('visible'));
+                } else {
+                    throw new Error(result.message || 'Error desconocido');
+                }
                 
             } catch (error) {
                 alert('Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.');
+                console.error('Error:', error);
             } finally {
                 // Restaurar botón
                 submitBtn.innerHTML = originalBtnText;
